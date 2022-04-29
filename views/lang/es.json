@@ -1,0 +1,25 @@
+{
+    "es" : {
+        "HOMEPAGE" : "INICIO",
+        "CARS" : "COCHES",
+        "SERVICES" : "SERVICIOS",
+        "CONTACT US" : "CONTACTANOS",
+        "CONCESSIONAIRE" : "CONCESIONARIO",
+        "LANGUAGES" : "LENGUAJES",
+        "SPANISH" : "ESPAÑOL",
+        "ENGLISH" : "INGLES",
+        "VALENCIAN" : "VALENCIANO",
+        "DUMMIES" : "DUMMIES",
+        "DELETE DUMMIES" : "BORRAR DUMMIES",
+        "LIST ALL" : "LISTAR TODO",
+        "CREATE" : "CREAR",
+        "DELETE ALL" : "BORRAR TODO",
+        "LIST NEW CARS" : "LISTAR COCHES NUEVOS",
+        "LIST CARS 2 HAND" : "LISTAR COCHES 2MANO",
+        "LIST CARS KM 0" : "LISTAR COCHES KM 0",
+        "NEW CARS" : "COCHES NUEVOS",
+        "2HAND CARS" : "COCHES 2MANO",
+        "KM0 CARS" : "COCHES KM0"
+    }
+
+}

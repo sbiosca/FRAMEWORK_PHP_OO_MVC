@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>load_type</name>
+        <uri>load_type</uri>
+    </function>
+    <function>
+        <name>load_model</name>
+        <uri>load_model</uri>
+    </function>
+    <function>
+        <name>autocomplete</name>
+        <uri>autocomplete</uri>
+    </function>
+    <function>
+        <name>search</name>
+        <uri>search</uri>
+    </function>
+</functions>

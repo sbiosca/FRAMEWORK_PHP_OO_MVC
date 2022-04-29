@@ -1,0 +1,26 @@
+{
+    "en" : {
+        "HOMEPAGE" : "HOMEPAGE",
+        "CARS" : "CARS",
+        "SERVICES" : "SERVICES",
+        "CONTACT US" : "CONTACT US",
+        "CONCESSIONAIRE" : "CONCESSIONAIRE",
+        "LANGUAGES" : "LANGUAGES",
+        "SPANISH" : "SPANISH",
+        "ENGLISH" : "ENGLISH",
+        "VALENCIAN" : "VALENCIAN",
+        "DUMMIES" : "DUMMIES",
+        "DELETE DUMMIES" : "DELETE DUMMIES",
+        "LIST ALL" : "LIST ALL",
+        "CREATE" : "CREATE",
+        "DELETE ALL" : "DELETE ALL",
+        "LIST NEW CARS" : "LIST NEW CARS",
+        "LIST CARS 2 HAND" : "LIST CARS 2 HAND",
+        "LIST CARS KM 0" : "LIST CARS KM 0",
+        "NEW CARS" : "NEW CARS",
+        "2HAND CARS" : "2HAND CARS",
+        "KM0 CARS" : "KM0 CARS"
+
+    }
+
+}

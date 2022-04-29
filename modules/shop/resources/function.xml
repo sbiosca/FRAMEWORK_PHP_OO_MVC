@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>view</name>
+        <uri>view</uri>
+    </function>
+    <function>
+        <name>filters</name>
+        <uri>filters</uri>
+    </function>
+    <function>
+        <name>list_cars</name>
+        <uri>list_cars</uri>
+    </function>
+    <function>
+        <name>count_pagination</name>
+        <uri>count_pagination</uri>
+    </function>
+    <function>
+        <name>list_one_cars</name>
+        <uri>list_one_cars</uri>
+    </function>
+    <function>
+        <name>more_related</name>
+        <uri>more_related</uri>
+    </function>
+    <function>
+        <name>count</name>
+        <uri>count</uri>
+    </function>
+    <function>
+        <name>load_filters</name>
+        <uri>load_filters</uri>
+    </function>
+    <function>
+        <name>count_filters</name>
+        <uri>count_filters</uri>
+    </function>
+</functions>

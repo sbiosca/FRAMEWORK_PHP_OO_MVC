@@ -1,0 +1,57 @@
+<?php
+    class mail {
+        public static function send_email($email) {
+            switch ($email['type']) {
+                case 'contact';
+                    $email['toEmail'] = 'sbiosca94@gmail.com';
+                    break;
+                case 'validate';
+                    $email['fromEmail'] = 'sbiosca94@gmail.com';
+                    $email['inputEmail'] = 'sbiosca94@gmail.com';
+                    $email['inputMatter'] = 'Email verification';
+                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/website/login/verify/$email[token]'>Click here for verify your email.</a>";
+                    break;
+                case 'recover';
+                    $email['fromEmail'] = 'sbiosca94@gmail.com';
+                    $email['inputEmail'] = 'sbiosca94@gmail.com';
+                    $email['inputMatter'] = 'Recover password';
+                    $email['inputMessage'] = "<a href = 'http://localhost/website/login/recover/$email[token]'>Click here for recover your password.</a>";
+                    break;
+            }
+            return self::send_mailgun($email);
+        }
+
+        public static function send_mailgun($data){
+            //$mailgun = parse_ini_file(UTILS . "mailgun.ini");
+            //$api_key = $mailgun['api_key'];
+            //$api_url = $mailgun['api_url'];
+
+            $config = array();
+            $config['api_key'] = "4cf94269ec2038cd21735190fd260508-38029a9d-a4112dd7"; //API Key  $api_key
+            $config['api_url'] = "https://api.mailgun.net/v3/sandbox497f03c76a914e369981e8880352faf5.mailgun.org/messages"; //API Base URL  $api_url
+    
+            $message = array();
+            $message['from'] = $data['fromEmail'];
+            $message['to'] = $data['toEmail'];
+            $message['h:Reply-To'] = $data['inputEmail'];
+            $message['subject'] = $data['inputMatter'];
+            $message['html'] = $data['inputMessage'];
+         
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $config['api_url']);
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+            curl_setopt($ch, CURLOPT_USERPWD, "api:{$config['api_key']}");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_POST, true); 
+            curl_setopt($ch, CURLOPT_POSTFIELDS,$message);
+            $result = curl_exec($ch);
+            curl_close($ch);
+            return $result;
+        }
+    }
+
+
+?>

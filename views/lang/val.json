@@ -1,0 +1,25 @@
+{
+    "val" : {
+        "HOMEPAGE" : "INICI",
+        "CARS" : "COTXES",
+        "SERVICES" : "SERVEIS",
+        "CONTACT US" : "CONTACTE",
+        "CONCESSIONAIRE" : "CONCESIONARI",
+        "LANGUAGES" : "LLENGUATGES",
+        "SPANISH" : "ESPANYOL",
+        "ENGLISH" : "ANGLÈS",
+        "VALENCIAN" : "VALENCIÀ",
+        "DUMMIES" : "DUMMIES",
+        "DELETE DUMMIES" : "BORRAR DUMMIES",
+        "LIST ALL" : "LLISTAR TOT",
+        "CREATE" : "CREAR",
+        "DELETE ALL" : "BORRAR TOT",
+        "LIST NEW CARS" : "LLISTAR COTXES NOUS",
+        "LIST CARS 2 HAND" : "LLISTAR COTXES 2MÀ",
+        "LIST CARS KM 0" : "LLISTAR COTXES KM 0",
+        "NEW CARS" : "COTXES NOUS",
+        "2HAND CARS" : "COTXES 2MÀ",
+        "KM0 CARS" : "COTXES KM0"
+    }
+
+}
