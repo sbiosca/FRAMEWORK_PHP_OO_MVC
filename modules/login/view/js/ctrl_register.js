@@ -12,7 +12,8 @@ function register(user){
     if(validator_register() != 0){
         var data = $('#register__form').serialize() + "&avatar=" +user;
         console.log(data);
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=register', 'POST', 'json', data)
+        //ajaxPromise('modules/login/ctrl/ctrl_login.php?op=register', 'POST', 'json', data)
+        ajaxPromise(friendlyURL('?modules=login&op=register'), 'POST', 'JSON', data)
        .then(function(result) {
             console.log(result);
             if(result == "error"){		
@@ -25,9 +26,13 @@ function register(user){
             }else if(result == "erroruser") {
                 $("#error_username").html('El usuario ya existe');
             }else {
-                localStorage.setItem("token", result);
-                setTimeout(' window.location.href = "index.php?modules=modules/home/ctrl/ctrl_home&op=list"; ',1000);
+                console.log("REGISTRADO CORRECTAMENTE");
+                toastr.success("EMAIL VERIFICADO")
+                //localStorage.setItem("token", result);
+                //setTimeout(' window.location.href = "index.php?modules=modules/home/ctrl/ctrl_home&op=list"; ',1000);
             }	
+        }).catch(function(error){
+            console.log(error);
         });
     }
 }

@@ -1,9 +1,6 @@
 <?php
     require 'autoload.php';
-    //require_once("paths.php");
-    //require_once("utils/common.inc.php");
-    //require_once("utils/mail.inc.php");
-   
+
     ob_start();
     session_start();
     
@@ -23,9 +20,7 @@
         
         function __construct() {
             if (isset($_GET['modules'])) {
-                $this -> urimodule = $_GET['modules'];
-                //$this -> urimodule = "contact";
-                
+                $this -> urimodule = $_GET['modules'];                
             }else {
                 $this -> urimodule = 'home';
                 

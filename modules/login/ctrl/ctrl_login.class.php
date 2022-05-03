@@ -1,4 +1,24 @@
 <?php
+
+    class ctrl_login {
+        function list_login() {
+            common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'login.html');
+        }
+        function list_register() {
+            common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'register.html');
+        }
+        function login() {
+            echo json_encode(common::load_view('login_model', 'get_login', [$_POST['username'], $_POST['password']]));
+        }
+        function register() {
+            echo json_encode(common::load_view('login_model', 'get_register', [$_POST['username'], $_POST['password'], $_POST['email'], $_POST['password1'], $_POST['avatar']]));
+        }
+        function verify_email() {
+            echo json_encode(common::load_view('login_model', 'get_verify_email', $_POST['token_email']));
+        }
+    }
+
+/*
 $path = $_SERVER['DOCUMENT_ROOT'] . '/BIOSCAR_PHP_OO_MVC_JQUERY/';
 include_once($path . 'modules/login/model/DAO_login.php');
 include_once($path . 'modules/login/model/validator_register.php');
@@ -6,73 +26,10 @@ include_once ($path . 'views/inc/jwt.php');
 @session_start();
 
 switch($_GET['op']) {
-    case "list_login";
-        if ($_GET['log']==='0') {
-            include_once("modules/login/view/login.html");
-            echo json_encode("login");
-        }else{
-            include_once("modules/login/view/login.html");
-        }
-        break;
-    case "list_register";
-        include_once("modules/login/view/register.html");
-        break;
-
     case "logout";
         $_SESSION['type'] = "";
         echo json_encode('Done');
-        break;
-    case "login";
-        $dao_login = new DAO_login();
-        $user = $dao_login -> select_user($_POST['username']);
-
-        //$jwt = parse_ini_file("model/jwt.ini");
-        //$header = $jwt['header'];
-        //$secret = $jwt['secret'];
-        
-        $header = '{"typ":"JWT", "alg":"HS256"}';
-        $secret = 'maytheforcebewithyou';
-        $payload = '{"iat":"'.time().'",
-                    "exp":"'.time().'",
-                    "name":"'.$user["username"].'"}';
-
-        if (password_verify($_POST['password'],$user['password'])) {
-            $JWT = new JWT;
-            $token = $JWT->encode($header, $payload, $secret);
-            $_SESSION['type'] = $user['type'];
-            echo json_encode($token);
-            exit;
-        }else {
-            echo json_encode("error");
-            exit;
-        }
-           
-        break;
-    
-    case "register";
-        $validar = validate($_POST['email']);
-        $validar1 = validate_passw($_POST['password'],$_POST['password1']); 
-        if (($validar) && ($validar1)){ 
-            $dao_login = new DAO_login();
-            $user = $dao_login -> insert_user($_POST['username'], $_POST['email'], $_POST['password'], $_POST['avatar']);
-            
-            if ($user) {
-            echo json_encode("USUARIO_REGISTER");
-            }
-            else {
-                echo json_encode("erroruser");
-            }
-            
-        }else if (($validar) && (!$validar1)) { 
-            echo json_encode("errorpassw");
-            exit;
-        }else if ((!$validar) && ($validar1)) {
-            echo json_encode("errormail");
-        }else {
-            echo json_encode('error');
-        }
-        break;
-    
+        break;    
     case "user_menu";
         //$jwt = parse_ini_file("jwt.ini");
         //$secret = $jwt['secret'];
@@ -136,5 +93,5 @@ switch($_GET['op']) {
         $id_refresh=session_id();
         echo json_encode($id_refresh);
         break;
-}
+}*/
 ?>

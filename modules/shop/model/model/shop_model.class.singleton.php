@@ -1,5 +1,5 @@
 <?php
-    //require("modules/home/model/BLL/home_bll.class.singleton.php");
+
     class shop_model {
         private $BLL;
         static $_instance;

@@ -2,7 +2,8 @@ function login() {
     if (validator_login() != 0) {
         var data = $('#login__form').serialize();
         console.log(data);
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=login', 'POST', 'json', data)
+        //ajaxPromise('modules/login/ctrl/ctrl_login.php?op=login', 'POST', 'json', data)
+        ajaxPromise(friendlyURL('?modules=login&op=login'), 'POST', 'JSON', data)
        .then(function(result) {
             console.log(result);
             if(result == "error"){

@@ -1,7 +1,7 @@
 function ajaxForSearch(url, items = 0, total, search) {
     //var total = 0;
     console.log(search);
-    ajaxPromise(url, 'GET' , 'JSON', {total: total, items: items, search: search})
+    ajaxPromise(url, 'POST' , 'JSON', {total: total, items: items, search: search})
     .then(function(data) {
         
         for (row in data){
@@ -26,7 +26,7 @@ function ajaxForSearch(url, items = 0, total, search) {
     });
 }
 function load_filter() {
-    ajaxPromise(friendlyURL('?modules=shop&op=filters'), 'GET', 'JSON')
+    ajaxPromise(friendlyURL('?modules=shop&op=filters'), 'POST', 'JSON')
     .then(function(data) {
             $(".form").append(
                 "<div class='div_form'><select class='brandss' id='selc'><optgroup id='bran' class='select1' label='ALL BRANDS'>" +
@@ -363,7 +363,7 @@ function redirect_details() {
 }
 
 function details(id) {
-        ajaxPromise(friendlyURL('?modules=shop&op=list_one_cars'), 'GET', 'JSON', {id: id})
+        ajaxPromise(friendlyURL('?modules=shop&op=list_one_cars'), 'POST', 'JSON', {id: id})
        .then(function(data) {
         console.log(data);
        // if (data[row].date){
@@ -406,7 +406,7 @@ function details(id) {
 }
 
 function count(id) {
-    ajaxPromise(friendlyURL('modules=shop&op=count'), 'GET', 'JSON', {id: id})
+    ajaxPromise(friendlyURL('modules=shop&op=count'), 'POST', 'JSON', {id: id})
 }
 
 function more_cars(data) {
@@ -415,7 +415,7 @@ function more_cars(data) {
     let type = data[0].type_name;
     let car = data[0].enrolment;
     //ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=more_related&categ=' + data[0].category_name + '&type=' + data[0].type_name + '&car=' + data[0].enrolment , 'GET', 'json')
-    ajaxPromise(friendlyURL('?modules=shop&op=more_related'), 'GET', 'JSON', {categ: categ, type: type, car: car})
+    ajaxPromise(friendlyURL('?modules=shop&op=more_related'), 'POST', 'JSON', {categ: categ, type: type, car: car})
        .then(function(data) {
         console.log(data);
         for (row in data){
@@ -464,7 +464,7 @@ function mapBox(data) {
 }
 
 function load_pagination(url2, url, search = null){
-    ajaxPromise(url2, 'GET', 'json', {search: search})
+    ajaxPromise(url2, 'POST', 'json', {search: search})
     .then(function(data) {
         
         var items = 0;
@@ -505,7 +505,7 @@ function read_likes_user(data,user) {
     for (row in data) {
         console.log(data[row].enrolment);
         var car = data[row].enrolment;
-        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=read_likes&id=' + car +'&user=' + user, 'GET', 'JSON')
+        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=read_likes&id=' + car +'&user=' + user, 'POST', 'JSON')
         .then(function(data){
             console.log(data);
             if (data[0].enrolment == null) {
@@ -543,7 +543,7 @@ function click_likes(user){
                 localStorage.setItem('url',url);
             }
             console.log(id);
-        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=load_likes&id=' + id +'&user=' + user , 'GET', 'JSON')
+        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=load_likes&id=' + id +'&user=' + user , 'POST', 'JSON')
         .then(function(data){
             console.log(data);
             if (data == "LIKE") {

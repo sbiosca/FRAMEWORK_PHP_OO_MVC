@@ -25,7 +25,6 @@ class common {
     }
 
     public static function load_models($model, $function = null, $args = null) {
-        
         $dir = explode('_', $model);
         $path = constant('MODEL_' . strtoupper($dir[0])) .  $model . '.class.singleton.php';
         if (file_exists($path)) {
@@ -39,6 +38,10 @@ class common {
             }
         }
         throw new Exception("ERROR LOAD_MODEL");
+    }
+
+    public static function generate_token($int) {
+        
     }
      
 }

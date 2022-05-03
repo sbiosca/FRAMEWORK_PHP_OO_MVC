@@ -28,7 +28,7 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
 }
 
 
@@ -42,8 +42,8 @@ function menu() {
         "<a class='nav-link' href='?modules=home&op=view' data-tr='CARS'>CARS</a>"
     ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
-        "<a class='nav-link' href='?modules=shop&op=view'><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
-        //"<a class='nav-link' href='index.php?modules=modules/shop/ctrl/ctrl_shop&op=list_shop'><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
+        //"<a class='nav-link' href="+ friendlyURL('?modules=shop&op=view')+ "><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
+        "<a class='nav-link' href='?modules=shop&op=view')><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
     ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
         "<a class='nav-link' href='?modules=contact&op=view'>CONTACT US</a>"
@@ -65,7 +65,8 @@ function menu() {
             menu_logeado(data);
         }).catch(function () {
             $("<button></button>").attr({"class" : "buttonlogin"}).html(
-                "<a href='index.php?modules=modules/login/ctrl/ctrl_login&op=list_login&log=0'>LOGIN</a>"
+                //"<a href='index.php?modules=modules/login/ctrl/ctrl_login&op=list_login&log=0'>LOGIN</a>"
+                "<a href='?modules=login&op=list_login'>LOGIN</a>"
             ).appendTo("#logear");
         });
 }

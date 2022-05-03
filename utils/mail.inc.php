@@ -22,13 +22,13 @@
         }
 
         public static function send_mailgun($data){
-            //$mailgun = parse_ini_file(UTILS . "mailgun.ini");
-            //$api_key = $mailgun['api_key'];
-            //$api_url = $mailgun['api_url'];
+            $mailgun = parse_ini_file(UTILS . "mailgun.ini");
+            $api_key = $mailgun['api_key'];
+            $api_url = $mailgun['api_url'];
 
             $config = array();
-            $config['api_key'] = "4cf94269ec2038cd21735190fd260508-38029a9d-a4112dd7"; //API Key  $api_key
-            $config['api_url'] = "https://api.mailgun.net/v3/sandbox497f03c76a914e369981e8880352faf5.mailgun.org/messages"; //API Base URL  $api_url
+            $config['api_key'] = $api_key; //API Key  $api_key
+            $config['api_url'] = $api_url; //API Base URL  $api_url
     
             $message = array();
             $message['from'] = $data['fromEmail'];

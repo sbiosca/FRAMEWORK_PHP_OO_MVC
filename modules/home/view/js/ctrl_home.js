@@ -5,7 +5,7 @@ function loadbrands(load = 0) {
     console.log(items);
     console.log(loaded);
     //ajaxPromise('?modules=home&op=carrousel_brand', 'POST', 'json',{loaded: loaded,items: items}
-    ajaxPromise('?modules=home&op=carrousel_brand', 'POST', 'JSON')
+    ajaxPromise(friendlyURL('?modules=home&op=carrousel_brand'), 'POST', 'JSON')
    .then(function(data) {
         console.log(data);
         for (row in data) {
@@ -51,7 +51,7 @@ function loadbrands(load = 0) {
 }
 
 function loadcategory() {
-    ajaxPromise('?modules=home&op=categ', 'GET', 'json')  
+    ajaxPromise(friendlyURL('?modules=home&op=categ'), 'POST', 'json')  
     //ajaxPromise('modules/home/ctrl/ctrl_home.php?op=categ', 'GET', 'json')
     .then(function(data) {
         for (row in data) {
@@ -71,7 +71,7 @@ function loadcategory() {
 }
 
 function loadtype() {
-    ajaxPromise('?modules=home&op=type', 'GET', 'json')
+    ajaxPromise(friendlyURL('?modules=home&op=type'), 'POST', 'json')
     //ajaxPromise('modules/home/ctrl/ctrl_home.php?op=type', 'GET', 'json')
    .then(function(data) {
         for (row in data) {
@@ -131,7 +131,7 @@ function click() {
 }
 
 function loadall() {
-    ajaxPromise("?modules=home&op=load_more", 'POST', 'JSON')
+    ajaxPromise(friendlyURL("?modules=home&op=load_more"), 'POST', 'JSON')
     //ajaxPromise("modules/home/ctrl/ctrl_home.php?op=load_all", 'POST', 'JSON')
     .then(function(data) {
       total_brands = data[0].count;

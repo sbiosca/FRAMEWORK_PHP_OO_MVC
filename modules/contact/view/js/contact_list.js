@@ -46,7 +46,8 @@ function check_email() {
 }
 
 function send_email(content_email) {
-	ajaxPromise('modules/contact/ctrl/ctrl_contact.class.php?op=send_contact', 'POST', 'JSON', content_email)
+	console.log(content_email);
+	ajaxPromise(friendlyURL('?modules=contact&op=send_contact'), 'POST', 'JSON', content_email)
 	.then(function(data){
 		toastr.success('Email sended');
 	}).catch(function(error, data) {
