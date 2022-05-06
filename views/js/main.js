@@ -28,7 +28,7 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
 }
 
 
@@ -50,16 +50,22 @@ function menu() {
         //'<a class="nav-link" href="'+ friendlyURL("?modules=contact&op=view") + ' ">CONTACT US</a>'
     ).appendTo(".navbar-nav");
 
-    var toke = localStorage.getItem('token');
         console.log(toke);
-        if (toke == "USUARIO_REGISTER") {
+        var toke = localStorage.getItem('token');
+        if (toke == "REGISTRADO") {
+            window.location.reload();
             toastr.options = {
                 'closeButton': true,                
             }
             toastr.success("SE HA REGISTRADO CORRECTAMENTE");
             localStorage.removeItem('token');
         }
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=user_menu', 'POST', 'JSON', {token: toke})
+    
+        if (toke) {
+            var toke = toke.replace(/['"]+/g, '');
+        }
+        //window.location.reload();
+        ajaxPromise(friendlyURL('?modules=login&op=user_menu'), 'POST', 'JSON', {token: toke})
         .then(function(data) {
             console.log(data);
             menu_logeado(data);
@@ -68,19 +74,21 @@ function menu() {
                 //"<a href='index.php?modules=modules/login/ctrl/ctrl_login&op=list_login&log=0'>LOGIN</a>"
                 "<a href='?modules=login&op=list_login'>LOGIN</a>"
             ).appendTo("#logear");
+           
         });
 }
 
 function menu_logeado(data) {
     console.log(data);
+    //console.log(data.replace(/['"]+/g, ''));
     $("<button></button>").attr({"class" : "button-logout"}).html(
         "<a href=''>LOGOUT</a>"
     ).appendTo("#logear");
     $("<a></a>").attr({"class" : "img-avatar"}).html(
-        "<img class='avatar' src='"+ data.avatar + "'/>"
+        "<img class='avatar' src='"+ data[0].avatar + "'/>"
     ).appendTo("#logear");
     $("<div></div>").attr({"id" : "popup-user"}).html(
-        "<p class='user-avatar'>" + data.username + "</p>" 
+        "<p class='user-avatar'>" + data[0].username + "</p>" 
     ).appendTo("#logear");
     $('div#popup-user').hide();
     $('a.img-avatar').hover(function(e) {
@@ -98,14 +106,15 @@ function clicklogout() {
 }
 
 function logout () {
-    ajaxPromise('modules/login/ctrl/ctrl_login.php?op=logout', 'POST', 'JSON')
+    ajaxPromise(friendlyURL('?modules=login&op=logout'), 'POST', 'JSON')
         .then(function(data) {
             console.log(data);
             localStorage.removeItem('token');
             localStorage.removeItem('url');
-            window.location.href = 'index.php?modules=modules/home/ctrl/ctrl_home&op=list';
-        }).catch(function () {
-            window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404';
+            window.location.href = '?modules=home&op=view';
+        }).catch(function (error) {
+            console.log(error);
+            //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404';
         });
 }
 

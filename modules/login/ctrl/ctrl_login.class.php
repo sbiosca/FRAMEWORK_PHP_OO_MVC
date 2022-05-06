@@ -8,13 +8,20 @@
             common::load_view('top_page_login.php', VIEW_PATH_LOGIN . 'register.html');
         }
         function login() {
-            echo json_encode(common::load_view('login_model', 'get_login', [$_POST['username'], $_POST['password']]));
+            echo json_encode(common::load_models('login_model', 'get_login', [$_POST['username'], $_POST['password']]));
         }
         function register() {
-            echo json_encode(common::load_view('login_model', 'get_register', [$_POST['username'], $_POST['password'], $_POST['email'], $_POST['password1'], $_POST['avatar']]));
+            echo json_encode(common::load_models('login_model', 'get_register', [$_POST['username'], $_POST['password'], $_POST['email'], $_POST['password1'], $_POST['avatar']]));
+            //echo json_encode(common::load_models('login_model', 'get_register'));
         }
         function verify_email() {
-            echo json_encode(common::load_view('login_model', 'get_verify_email', $_POST['token_email']));
+            echo json_encode(common::load_models('login_model', 'get_verify_email', $_POST['token_email']));
+        }
+        function user_menu() {
+            echo json_encode(common::load_models('login_model', 'get_user_menu', $_POST['token']));
+        }
+        function logout() {
+            echo json_encode('Done');
         }
     }
 
@@ -26,25 +33,6 @@ include_once ($path . 'views/inc/jwt.php');
 @session_start();
 
 switch($_GET['op']) {
-    case "logout";
-        $_SESSION['type'] = "";
-        echo json_encode('Done');
-        break;    
-    case "user_menu";
-        //$jwt = parse_ini_file("jwt.ini");
-        //$secret = $jwt['secret'];
-        $secret = 'maytheforcebewithyou';
-        $token = $_POST['token'];
-
-        $JWT = new JWT;
-        $json = $JWT->decode($token, $secret);
-        $json = json_decode($json, TRUE);
-
-        $dao_login = new DAO_login();
-        $user = $dao_login -> select_data($json['name']);
-        echo json_encode($user);
-        break;
-
     case "activity";
         if (!isset($_SESSION["tiempo"])) {
             echo time() - $_SESSION["tiempo"];

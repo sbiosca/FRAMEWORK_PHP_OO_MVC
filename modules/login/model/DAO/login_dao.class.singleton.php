@@ -33,7 +33,7 @@ class login_DAO {
     }
     public function insert_user($db, $username, $email, $passw, $avatar, $token, $token_uuid) {
         $sql = "INSERT INTO users (ID, username, password, email, type, avatar, token_email, activate)
-        VALUES ('$token_uuid', '$username', '$passw', '$email', '', '$avatar', $token, 'false')";
+        VALUES ('$token_uuid', '$username', '$passw', '$email', 'cliente', '$avatar', '$token', 'false')";
         return $db->execute($sql);
     }
     public function select_verified_email($db, $token) {
@@ -42,9 +42,15 @@ class login_DAO {
         return $db->list($stmt);
     }
     public function update_verified_email($db, $token, $new_token){
-        $sql = "UPDATE users SET activate= true, token_email= '$new_token' WHERE token_email = '$token'";
+        $sql = "UPDATE users SET activate= 'true', token_email= '$new_token' WHERE token_email = '$token'";
         $db->ejecutar($sql);
         return "done!";
+    }
+    public function select_data($db, $token) {
+        $sql = "SELECT username, email, type, avatar FROM users 
+        WHERE ID='$token'";
+        $stmt = $db->execute($sql);
+        return $db->list($stmt);
     }
 
 }

@@ -4,7 +4,7 @@
  * Copyright(c)2011 Miguel Angel Nubla Ruiz (miguelangel.nubla@gmail.com). All rights reserved
  */
 
-class JWT {
+class jwt {
     private $alg;
     private $hash;
     private $data;

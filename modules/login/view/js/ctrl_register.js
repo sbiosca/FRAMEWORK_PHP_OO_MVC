@@ -14,9 +14,20 @@ function register(user){
         console.log(data);
         //ajaxPromise('modules/login/ctrl/ctrl_login.php?op=register', 'POST', 'json', data)
         ajaxPromise(friendlyURL('?modules=login&op=register'), 'POST', 'JSON', data)
-       .then(function(result) {
-            console.log(result);
-            if(result == "error"){		
+       .then(function(data) {
+            console.log(data);
+            if (data == "REGISTRADO") {
+                console.log("DONE!");
+                //toastr.success("REGISTRADO CORRECTAMENTE");
+                localStorage.setItem("token", data);
+                //toastr.success("EMAIL VERIFICADO")
+                setTimeout(' window.location.href = "?modules=home&op=view"; ',1000);
+            }
+            else {
+                console.log("Failed!");
+                $("#error_email").html('El email ya existe');
+            }
+            /*if(result == "error"){		
                 $("#error_email").html('El email ya existe');
                 $("#error_password1").html('Las contraseñas no coinciden');
             }else if(result == "errormail"){		
@@ -27,10 +38,10 @@ function register(user){
                 $("#error_username").html('El usuario ya existe');
             }else {
                 console.log("REGISTRADO CORRECTAMENTE");
-                toastr.success("EMAIL VERIFICADO")
+                toastr.success("EMAIL VERIFICADO")*/
                 //localStorage.setItem("token", result);
                 //setTimeout(' window.location.href = "index.php?modules=modules/home/ctrl/ctrl_home&op=list"; ',1000);
-            }	
+            //}
         }).catch(function(error){
             console.log(error);
         });

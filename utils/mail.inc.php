@@ -3,17 +3,18 @@
         public static function send_email($email) {
             switch ($email['type']) {
                 case 'contact';
-                    $email['toEmail'] = 'sbiosca94@gmail.com';
+                    $email['toEmail'] = 'bioscar.soporte@gmail.com';
                     break;
                 case 'validate';
-                    $email['fromEmail'] = 'sbiosca94@gmail.com';
-                    $email['inputEmail'] = 'sbiosca94@gmail.com';
+                    $email['fromEmail'] = 'bioscar.soporte@gmail.com';
+                    $email['inputEmail'] = 'bioscar.soporte@gmail.com';
                     $email['inputMatter'] = 'Email verification';
-                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/website/login/verify/$email[token]'>Click here for verify your email.</a>";
+                    $email['inputMessage'] = 'VERIFICATION';
+                    $email['inputMessage'] = "<h2>Email verification.</h2><a href = 'http://localhost/FRAMEWORK_PHP_OO_MVC/login/list_login/verify/$email[token]'>Click here for verify your email.</a>";
                     break;
                 case 'recover';
-                    $email['fromEmail'] = 'sbiosca94@gmail.com';
-                    $email['inputEmail'] = 'sbiosca94@gmail.com';
+                    $email['fromEmail'] = 'bioscar.soporte@gmail.com';
+                    $email['inputEmail'] = 'bioscar.soporte@gmail.com';
                     $email['inputMatter'] = 'Recover password';
                     $email['inputMessage'] = "<a href = 'http://localhost/website/login/recover/$email[token]'>Click here for recover your password.</a>";
                     break;

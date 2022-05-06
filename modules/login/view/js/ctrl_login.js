@@ -14,17 +14,18 @@ function login() {
                     "extendedTimeout" : "5"
                 });
                 localStorage.setItem("token", result);
-                var url = localStorage.getItem('url')
+                //var url = localStorage.getItem('url')
                 
-                if (url){
+                /*if (url){
                     window.location.href = url;
                     click_likes(result);
-                }else {
-                    setTimeout(' window.location.href = "index.php?modules=modules/home/ctrl/ctrl_home&op=list"; ',1000);
-                }
-            }	
-        }).catch(function(){
-            $("#error_password").html('La contraseña o usuario no es correcto');
+                }else {*/
+                    setTimeout(' window.location.href = "?modules=home&op=view"; ',1000);
+                
+            }
+        }).catch(function(error){
+            console.log(error);
+            //$("#error_password").html('La contraseña o usuario no es correcto');
         });
     }
 }
@@ -43,7 +44,32 @@ function buttonclick() {
         e.preventDefault();
         login();
     });
+
+    $(document).on("click",".button-google",function(e) {
+        social_login("google");
+    });
+    $(document).on("click",".button-git",function(e) {
+        social_login("github");
+    });
 }
+
+function firebase_config(){
+    var config = {
+        apiKey: "AIzaSyCYb_cRSfjsPE8uLFJF9DJZV7a1cqNBG5E",
+        authDomain: "test-56e9e.firebaseapp.com",
+        databaseURL: "https://test-56e9e.firebaseapp.com",
+        projectId: "test-56e9e",
+        storageBucket: "",
+        //messagingSenderId: "613764177727"
+    };
+    if(!firebase.apps.length){
+        firebase.initializeApp(config);
+    }else{
+        firebase.app();
+    }
+    return authService = firebase.auth();
+}
+
 function validator_login() {
     var error = false;
 
@@ -66,8 +92,33 @@ function validator_login() {
     }
 }
 
+function load_content() {
+    let path = window.location.pathname.split('/');
+    //$('.container').empty();
+    if(path[3] === 'recover'){
+        load_form_new_password(path[4]);
+    }else if (path[4] === 'verify') {
+        console.log(path[5]);
+        console.log("HOLAAAAAAAAAAAAAA");
+        var token_email = path[5];
+
+        ajaxPromise(friendlyURL('?modules=login&op=verify_email'), 'POST', 'JSON', token_email)
+        .then(function(data) {
+            console.log(data);
+        }).catch(function(error) {
+            console.log(error);
+        });
+        
+    }
+    /*else if (path[2] === 'register') {
+        load_register();
+    }else if(path[2] === 'login'){
+        load_login();
+    }*/
+}
 
 $(document).ready(function(){
     buttonclick();
     keylogin();
+    load_content();
 });

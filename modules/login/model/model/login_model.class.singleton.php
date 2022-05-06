@@ -23,5 +23,8 @@
         public function get_verify_email($args) {
             return $this -> BLL -> get_verify_email_BLL($args);
         }
+        public function get_user_menu($args) {
+            return $this -> BLL -> get_user_menu_BLL($args);
+        }
     }
 ?>

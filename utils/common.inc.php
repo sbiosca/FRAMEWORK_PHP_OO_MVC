@@ -41,6 +41,10 @@ class common {
     }
 
     public static function generate_token($int) {
+        if ($int < 4) {
+            $int = 4;
+        }
+        return bin2hex(openssl_random_pseudo_bytes(($int - ($int % 2)) / 2));
         
     }
      

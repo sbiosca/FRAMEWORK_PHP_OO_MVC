@@ -20,4 +20,12 @@
         <name>verify_email</name>
         <uri>verify_email</uri>
     </function>
+    <function>
+        <name>user_menu</name>
+        <uri>user_menu</uri>
+    </function>
+    <function>
+        <name>logout</name>
+        <uri>logout</uri>
+    </function>
 </functions>

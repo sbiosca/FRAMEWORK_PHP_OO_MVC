@@ -1,11 +1,11 @@
 <?php
-class jwt {
+class jwt_process {
     public static function encode($user) {
         $jwt = parse_ini_file(UTILS . "jwt.ini");
         $header = $jwt['header'];
         $secret = $jwt['secret'];
-        $payload = json_encode(['iat' => time(), 'exp' => time() + (60 * 60), 'name' => $user]);
-        $JWT = new jwt();
+        $payload = json_encode(['iat' => time(), 'exp' => time() , 'name' => $user]);
+        $JWT = new JWT();
         return $JWT -> encode($header, $payload, $secret);
     }
 
