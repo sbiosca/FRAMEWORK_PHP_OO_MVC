@@ -32,6 +32,12 @@
             <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+            <!-- FIREBASE - social login-->
+            <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
             <script src="<?php echo SITE_PATH ?>modules/search/views/js/ctrl_search.js"></script>
             <script src="<?php echo SITE_PATH ?>views/js/translate.js"></script>
             <script src="<?php echo SITE_PATH ?>views/js/main.js"></script>

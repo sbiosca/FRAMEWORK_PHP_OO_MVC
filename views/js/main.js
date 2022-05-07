@@ -28,7 +28,7 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
 }
 
 

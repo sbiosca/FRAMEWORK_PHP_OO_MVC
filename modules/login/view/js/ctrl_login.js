@@ -45,11 +45,34 @@ function buttonclick() {
         login();
     });
 
-    $(document).on("click",".button-google",function(e) {
+    $(document).on("click",".button-google",function() {
         social_login("google");
     });
-    $(document).on("click",".button-git",function(e) {
+    $(document).on("click",".button-git",function() {
         social_login("github");
+    });
+}
+
+function social_login(data){
+    authService = firebase_config();
+    authService.signInWithPopup(provider_config(data))
+    .then(function(result) {
+        console.log('Hemos autenticado al usuario ', result.user);
+        console.log(result.user.displayName);
+        console.log(result.user.email);
+        console.log(result.user.photoURL);
+       
+        if (result) {
+        ajaxPromise(friendlyURL('?modules=login&op=social_login'), 'POST', 'JSON', token_email)
+        .then(function(done) {
+            console.log(done);
+        }).catch(function(error) {
+            console.log(error);
+        });
+       }
+    })
+    .catch(function(error) {
+        console.log('Se ha encontrado un error:', error);
     });
 }
 
@@ -68,6 +91,16 @@ function firebase_config(){
         firebase.app();
     }
     return authService = firebase.auth();
+}
+
+function provider_config(param){
+    if(param === 'google'){
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('email');
+        return provider;
+    }else if(param === 'github'){
+        return provider = new firebase.auth.GithubAuthProvider();
+    }
 }
 
 function validator_login() {

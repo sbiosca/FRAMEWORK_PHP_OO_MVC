@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 05-04-2022 a les 20:07:07
--- Versió del servidor: 10.4.22-MariaDB
--- Versió de PHP: 7.3.33
+-- Tiempo de generación: 07-05-2022 a las 12:20:55
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `bioscar`
+-- Base de datos: `bioscar`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `brand`
+-- Estructura de tabla para la tabla `brand`
 --
 
 CREATE TABLE `brand` (
@@ -34,7 +34,7 @@ CREATE TABLE `brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `brand`
+-- Volcado de datos para la tabla `brand`
 --
 
 INSERT INTO `brand` (`cod_brand`, `brand_name`, `brand_img`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `brand` (`cod_brand`, `brand_name`, `brand_img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `cars`
+-- Estructura de tabla para la tabla `cars`
 --
 
 CREATE TABLE `cars` (
@@ -79,21 +79,21 @@ CREATE TABLE `cars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `cars`
+-- Volcado de datos para la tabla `cars`
 --
 
 INSERT INTO `cars` (`id`, `numrack`, `cod_model`, `enrolment`, `exchange`, `color`, `cod_type`, `km`, `doors`, `date`, `extras`, `cod_category`, `car_img`, `lat`, `lon`, `city`, `price`, `count`) VALUES
-(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 179),
-(2, '03565602', 'EN', '2656JTR', 'AUTOMATIC', 'RED', 'HY', 27852, 3, '2022-02-01', 'sensor', '2M', 'ferrari_enzo.jpg', 39.4697, -0.376335, 'Valencia', 250000, 35),
-(3, '2566', 'FI', '2036HTW', 'MANUAL', 'WHITE', 'GAS', 6980, 3, '2020-04-17', 'camera', '2M', 'ford_fiesta.jpg', 38.8387, -0.518189, 'Albaida', 14000, 25),
-(4, '26562603sF', 'UR', '0239LNG', 'AUTOMATIC', 'YELLOW', 'GAS', 12000, 5, '2019-04-05', '4x4', 'GR', 'lamborghini_urus.jpg', 41.3829, 2.17743, 'Barcelona', 150000, 25),
-(5, '1023153212d', 'KA', '7692BSR', 'MANUAL', 'BLUE', 'GAS', 199586, 3, '2002-02-20', 'sin', '2M', 'ford_ka.jpg', 38.3436, -0.488171, 'Alacant', 2500, 29),
-(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 96);
+(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 50),
+(2, '03565602', 'EN', '2656JTR', 'AUTOMATIC', 'RED', 'HY', 27852, 3, '2022-02-01', 'sensor', '2M', 'ferrari_enzo.jpg', 39.4697, -0.376335, 'Valencia', 250000, 46),
+(3, '2566', 'FI', '2036HTW', 'MANUAL', 'WHITE', 'GAS', 6980, 3, '2020-04-17', 'camera', '2M', 'ford_fiesta.jpg', 38.8387, -0.518189, 'Albaida', 14000, 31),
+(4, '26562603sF', 'UR', '0239LNG', 'AUTOMATIC', 'YELLOW', 'GAS', 12000, 5, '2019-04-05', '4x4', 'GR', 'lamborghini_urus.jpg', 41.3829, 2.17743, 'Barcelona', 150000, 30),
+(5, '1023153212d', 'KA', '7692BSR', 'MANUAL', 'BLUE', 'GAS', 199586, 3, '2002-02-20', 'sin', '2M', 'ford_ka.jpg', 38.3436, -0.488171, 'Alacant', 2500, 34),
+(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 133);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `category`
+-- Estructura de tabla para la tabla `category`
 --
 
 CREATE TABLE `category` (
@@ -103,7 +103,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `category`
+-- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`cod_category`, `category_name`, `category_img`) VALUES
@@ -114,7 +114,7 @@ INSERT INTO `category` (`cod_category`, `category_name`, `category_img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `exceptions`
+-- Estructura de tabla para la tabla `exceptions`
 --
 
 CREATE TABLE `exceptions` (
@@ -123,7 +123,7 @@ CREATE TABLE `exceptions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `exceptions`
+-- Volcado de datos para la tabla `exceptions`
 --
 
 INSERT INTO `exceptions` (`404`, `503`) VALUES
@@ -1140,12 +1140,22 @@ INSERT INTO `exceptions` (`404`, `503`) VALUES
 ('', 'ERROR 503'),
 ('', 'ERROR 503'),
 ('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
+('', 'ERROR 503'),
 ('', 'ERROR 503');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `img_cars`
+-- Estructura de tabla para la tabla `img_cars`
 --
 
 CREATE TABLE `img_cars` (
@@ -1155,7 +1165,7 @@ CREATE TABLE `img_cars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `img_cars`
+-- Volcado de datos para la tabla `img_cars`
 --
 
 INSERT INTO `img_cars` (`id_img`, `cod_model`, `img`) VALUES
@@ -1179,7 +1189,7 @@ INSERT INTO `img_cars` (`id_img`, `cod_model`, `img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `likes`
+-- Estructura de tabla para la tabla `likes`
 --
 
 CREATE TABLE `likes` (
@@ -1187,10 +1197,17 @@ CREATE TABLE `likes` (
   `enrolment` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `likes`
+--
+
+INSERT INTO `likes` (`username`, `enrolment`) VALUES
+('moisesguer', '2556HRM');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `model`
+-- Estructura de tabla para la tabla `model`
 --
 
 CREATE TABLE `model` (
@@ -1200,7 +1217,7 @@ CREATE TABLE `model` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `model`
+-- Volcado de datos para la tabla `model`
 --
 
 INSERT INTO `model` (`cod_model`, `model_name`, `cod_brand`) VALUES
@@ -1214,7 +1231,7 @@ INSERT INTO `model` (`cod_model`, `model_name`, `cod_brand`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `type`
+-- Estructura de tabla para la tabla `type`
 --
 
 CREATE TABLE `type` (
@@ -1224,7 +1241,7 @@ CREATE TABLE `type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `type`
+-- Volcado de datos para la tabla `type`
 --
 
 INSERT INTO `type` (`cod_type`, `type_name`, `type_img`) VALUES
@@ -1236,50 +1253,42 @@ INSERT INTO `type` (`cod_type`, `type_name`, `type_img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
+  `ID` varchar(250) NOT NULL,
   `username` varchar(500) NOT NULL,
   `password` varchar(1000) NOT NULL,
   `email` varchar(500) NOT NULL,
   `type` text NOT NULL,
-  `avatar` varchar(1000) NOT NULL
+  `avatar` varchar(1000) NOT NULL,
+  `token_email` varchar(254) NOT NULL,
+  `activate` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `users`
+-- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `email`, `type`, `avatar`) VALUES
-('10604728', '$2y$12$XDlOEBofLZRjfvPdVCIS7uwd0zgbGeeygo0e2zuE9LM8XFYRtAEDC', 'sbiosca92204@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/18.jpg'),
-('1060472899', '$2y$12$BjufbR4vz.5KbGxLL3c9CupzQ4NOdh9oP5UQpJpSBfvcchUqVhaIy', 'sbiosca9494@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/23.jpg'),
-('bioskin94', '$2y$12$XA4dKii.qSC6s.mdRmg9Uew8UDNTe0uMoQ1pXoFZoQhp3zlqZ4M2S', 'bioskin94@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/2.jpg'),
-('carlaloos', '$2y$12$xpniRnSa.ciQpPhAbqGKoO5qbuVO6Z/aW86BbGwxOnjA9xWnDadHW', 'carlaloossoriano22@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/85.jpg'),
-('carlavicky', '$2y$12$mDmCCxLhnakZvs0i/4z4deGFckErk2rEdFRFOAE0cmubErfDD7Y6q', 'carlita@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/53.jpg'),
-('francisco', '$2y$12$ivIMB7hEdGzVwZ2cZcvv6ef1kPtkhVc5cgFsJsyaNJ/EdBYN2Cjqa', 'francisco@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/33.jpg'),
-('Pepevillanuevacastillo', '$2y$12$5KDb4CBHMNdjDCdZwJvoX.ByCL/P8ttJRambfeJq9Y1.1ZHTxn8HG', 'pepevillanuevacastillo@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/77.jpg'),
-('pepito123', '$2y$12$nql1qComUW3tsxC9m/0WwuMSU2BDoJhe.UTbJPHqt2Ft4qeECr/je', 'mgpandatorceo@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/20.jpg'),
-('pepito1235', '$2y$12$iXodqj3S2zrEzA4qcAXWiuRyYRWDJw14kwcMpGSe9IO4S.QhQ8mKS', 'rosabeneyto@hotmail.come', 'cliente', 'https://randomuser.me/api/portraits/women/37.jpg'),
-('rosabeneyto', '$2y$12$arhdiM4YNlAjfQJZ1j6IDeWzJe0uLGAx.gCGWicHwdi1KIuL1euRe', 'rosabeneyto@hotmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/16.jpg'),
-('sbiosca94', '$2y$12$5hj38R1EzKKuJ0xrRCAOz.vfQpNEioOdEb8nfoy0c2HZFBvz0v6AC', 'sbiosca22@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/95.jpg'),
-('sergibeneyto', '$2y$12$4nrF8GIJ0wm5k0xEUgOZrulMgFd1kX0wGRbmzEjtkoukTBZlPAIeC', 'sergibiosca22@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/63.jpg'),
-('sergibiosca', '$2y$12$kP1HlNyTNQHt/0CwSQ9XjesXDyfhzsVYU/0omPECHI8zgtQPNYlR2', 'sbiosca94@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/11.jpg'),
-('vicenteeeee', '$2y$12$/QmPwkCDFj3xITgR8IsGMeOtXsqePp4W21yjxeaQCHd8NAleFRDXm', 'sbiosca9eeeee4@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/94.jpg'),
-('ximuele12', '$2y$12$hwUnOgT5QUbQxvDVEF4BOO/fy/o3JEEG7d4gvIFh5UHrv9O3F3Q/6', 'ximuele@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/70.jpg');
+INSERT INTO `users` (`ID`, `username`, `password`, `email`, `type`, `avatar`, `token_email`, `activate`) VALUES
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NDk4ODUsImV4cCI6MTY1MTg0OTg4NSwibmFtZSI6IjEwNjA0NzI4ODgifQ.tz3zLm189GpVp1lD1uumPBA2m_HoOIOfkA7BGy2rAR0', '1060472888', '$2y$12$TXkKgEPNskwbWcERHZaakeg4pgOqITT1lgq3E2Tg0SYJxhDe9Rt.S', 'serbidawaa@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/58.jpg', '13b79e23bbe9479dd692', 'false'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTAzMjgsImV4cCI6MTY1MTg1MDMyOCwibmFtZSI6InlvbW9nYW4yIn0.gu0gIaMomulAngWwVONdqUDzyCByD4-10Gr7Kc7VrpM', 'yomogan2', '$2y$12$3b.r.RI3AUjpqORtb3CU7OG9dp6waQjXxcl4FHx8KNggNZhSRXdxi', 'yomogan@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/61.jpg', '4d021e5eaa2b11291964', 'false'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTM5MjQsImV4cCI6MTY1MTg1MzkyNCwibmFtZSI6InBlcGl0bzEyMyJ9.CB43VOsLeV46pS_vzDzgu9W9l2Vfh5COUBo5eNOZGT4', 'pepito123', '$2y$12$ZfqEXoNagz9.7ejWMOI93eMpV7rYsWEQJWO3SshN3jbtrx./bGwAa', 'sbio4@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/12.jpg', '2b1db468ea0fe584ba47', 'false'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE5MTc5OTIsImV4cCI6MTY1MTkxNzk5MiwibmFtZSI6InNlcmdpYmlvc2NhIn0.rgZvyNeiIiFjtpn3ENl0eZgp39FX7deJE1wsDM7aZ4w', 'sergibiosca', '$2y$12$cu.rK3cvQnvxo1dsjJfVjusi8v/PkFCvIzceSVi3dUbP7qJKPs0d2', 'serbidaw@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/55.jpg', '0719ea7461edc49b36e4', 'false');
 
 --
--- Índexs per a les taules bolcades
+-- Índices para tablas volcadas
 --
 
 --
--- Índexs per a la taula `brand`
+-- Indices de la tabla `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`cod_brand`);
 
 --
--- Índexs per a la taula `cars`
+-- Indices de la tabla `cars`
 --
 ALTER TABLE `cars`
   ADD PRIMARY KEY (`id`),
@@ -1288,51 +1297,52 @@ ALTER TABLE `cars`
   ADD KEY `cod_category` (`cod_category`) USING BTREE;
 
 --
--- Índexs per a la taula `category`
+-- Indices de la tabla `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`cod_category`);
 
 --
--- Índexs per a la taula `img_cars`
+-- Indices de la tabla `img_cars`
 --
 ALTER TABLE `img_cars`
   ADD PRIMARY KEY (`id_img`) USING BTREE,
   ADD KEY `cod_model` (`cod_model`) USING BTREE;
 
 --
--- Índexs per a la taula `likes`
+-- Indices de la tabla `likes`
 --
 ALTER TABLE `likes`
   ADD KEY `username` (`username`),
   ADD KEY `enrolment` (`enrolment`);
 
 --
--- Índexs per a la taula `model`
+-- Indices de la tabla `model`
 --
 ALTER TABLE `model`
   ADD PRIMARY KEY (`cod_model`),
   ADD KEY `cod_brand` (`cod_brand`) USING BTREE;
 
 --
--- Índexs per a la taula `type`
+-- Indices de la tabla `type`
 --
 ALTER TABLE `type`
   ADD PRIMARY KEY (`cod_type`);
 
 --
--- Índexs per a la taula `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`),
-  ADD UNIQUE KEY `email` (`email`) USING BTREE;
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `email` (`email`) USING BTREE,
+  ADD UNIQUE KEY `username` (`username`);
 
 --
--- Restriccions per a les taules bolcades
+-- Restricciones para tablas volcadas
 --
 
 --
--- Restriccions per a la taula `cars`
+-- Filtros para la tabla `cars`
 --
 ALTER TABLE `cars`
   ADD CONSTRAINT `cars_ibfk_1` FOREIGN KEY (`cod_model`) REFERENCES `model` (`cod_model`),
@@ -1340,7 +1350,7 @@ ALTER TABLE `cars`
   ADD CONSTRAINT `cars_ibfk_3` FOREIGN KEY (`cod_category`) REFERENCES `category` (`cod_category`);
 
 --
--- Restriccions per a la taula `model`
+-- Filtros para la tabla `model`
 --
 ALTER TABLE `model`
   ADD CONSTRAINT `model_ibfk_1` FOREIGN KEY (`cod_brand`) REFERENCES `brand` (`cod_brand`),
