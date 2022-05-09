@@ -43,7 +43,7 @@ class login_DAO {
     }
     public function update_verified_email($db, $token, $new_token){
         $sql = "UPDATE users SET activate= 'true', token_email= '$new_token' WHERE token_email = '$token'";
-        $db->ejecutar($sql);
+        $db->execute($sql);
         return "done!";
     }
     public function select_data($db, $token) {
@@ -52,7 +52,21 @@ class login_DAO {
         $stmt = $db->execute($sql);
         return $db->list($stmt);
     }
-
+    public function insert_social_login($db, $username, $id, $avatar) {
+        $sql = "INSERT INTO users (ID, username, password, email, type, avatar, token_email, activate)
+        VALUES ('$id', '$username', '', '$username', 'cliente', '$avatar', '', 'true')";
+        return $db->execute($sql);
+    }
+    public function update_recover_password($db, $email, $token){
+        $sql = "UPDATE users SET token_email = '$token' WHERE email = '$email'";
+        $db->execute($sql);
+        return "done!";
+    }
+    public function update_new_passwd($db, $token, $password, $new_token){
+        $sql = "UPDATE users SET password= '$password', token_email= '$new_token' WHERE token_email = '$token'";
+        $db->execute($sql);
+        return "done!";
+    }
 }
 
 

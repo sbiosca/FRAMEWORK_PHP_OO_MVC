@@ -10,6 +10,9 @@
         function login() {
             echo json_encode(common::load_models('login_model', 'get_login', [$_POST['username'], $_POST['password']]));
         }
+        function social_login() {
+            echo json_encode(common::load_models('login_model', 'get_social_login', [$_POST['user'], $_POST['id'], $_POST['avatar']]));
+        }
         function register() {
             echo json_encode(common::load_models('login_model', 'get_register', [$_POST['username'], $_POST['password'], $_POST['email'], $_POST['password1'], $_POST['avatar']]));
             //echo json_encode(common::load_models('login_model', 'get_register'));
@@ -22,6 +25,15 @@
         }
         function logout() {
             echo json_encode('Done');
+        }
+        function send_recover_email() {
+            echo json_encode(common::load_models('login_model', 'get_recover', $_POST['email']));
+        }
+        function verify_token() {
+            echo json_encode(common::load_models('login_model', 'get_token', $_POST['token']));
+        }
+        function new_password() {
+            echo json_encode(common::load_models('login_model', 'get_new_password', [$_POST['token'], $_POST['passwd']]));
         }
     }
 

@@ -17,6 +17,9 @@
         public function get_login($args) {
             return $this -> BLL -> get_login_BLL($args);
         }
+        public function get_social_login($args) {
+            return $this -> BLL -> get_social_login_BLL($args);
+        }
         public function get_register($args) {
             return $this -> BLL -> get_register_BLL($args);
         }
@@ -25,6 +28,15 @@
         }
         public function get_user_menu($args) {
             return $this -> BLL -> get_user_menu_BLL($args);
+        }
+        public function get_recover($args) {
+            return $this -> BLL -> get_recover_BLL($args);
+        }
+        public function get_token($args) {
+            return $this -> BLL -> get_token_BLL($args);
+        }
+        public function get_new_password($args) {
+            return $this -> BLL -> get_new_password_BLL($args);
         }
     }
 ?>

@@ -16,7 +16,7 @@
                     $email['fromEmail'] = 'bioscar.soporte@gmail.com';
                     $email['inputEmail'] = 'bioscar.soporte@gmail.com';
                     $email['inputMatter'] = 'Recover password';
-                    $email['inputMessage'] = "<a href = 'http://localhost/website/login/recover/$email[token]'>Click here for recover your password.</a>";
+                    $email['inputMessage'] = "<a href = 'http://localhost/FRAMEWORK_PHP_OO_MVC/login/list_login/recover/$email[token]'>Click here for recover your password.</a>";
                     break;
             }
             return self::send_mailgun($email);
