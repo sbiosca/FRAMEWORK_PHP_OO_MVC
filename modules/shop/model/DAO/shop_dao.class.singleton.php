@@ -1,5 +1,5 @@
 <?php
- //require("model/db.class.singleton.php");
+
 class shop_DAO {
     static $_instance;
 
@@ -126,6 +126,35 @@ class shop_DAO {
         $stmt = $db->execute($sql);
         return $db->list($stmt);
     }
+
+    public function read_likes($db, $user, $id) {
+        $sql = "SELECT enrolment,username 
+        FROM likes 
+        WHERE username='$user' AND enrolment='$id'";
+        $stmt = $db->execute($sql);
+        return $db->list($stmt);
+    }
+    public function count_likes($db, $user, $id) {
+        $sql = "SELECT enrolment,username
+        FROM likes
+        WHERE enrolment='$id' AND username='$user'";
+        $stmt = $db->execute($sql);
+        return $db->list($stmt);
+    }
+    public function like($db, $user, $id) {
+        $sql = "INSERT INTO likes 
+        (username, enrolment) 
+        VALUES ('$user', '$id')";
+        $db->execute($sql);
+        return "done";
+    }
+    public function dislike($db, $user, $id) {
+        $sql = "DELETE FROM likes
+        WHERE username='$user' AND enrolment='$id'";
+        $db->execute($sql);
+        return "done";
+    }
+    
 
 }
 

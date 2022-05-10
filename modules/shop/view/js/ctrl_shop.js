@@ -505,7 +505,8 @@ function read_likes_user(data,user) {
     for (row in data) {
         console.log(data[row].enrolment);
         var car = data[row].enrolment;
-        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=read_likes&id=' + car +'&user=' + user, 'POST', 'JSON')
+        var token = user.replace(/['"]+/g, '');
+        ajaxPromise('?modules=shop&op=read_likes', 'POST', 'JSON', {id: car, user: token})
         .then(function(data){
             console.log(data);
             if (data[0].enrolment == null) {
@@ -537,13 +538,15 @@ function click_likes(user){
                     "extendedTimeout" : "5"
                 }
                 );
-                var url = "index.php?modules=modules/login/ctrl/ctrl_login&op=list_login&log=" + id;
+                var url = "?modules=login&op=list_login&log=" + id;
                 window.location.href = url;
-                var url = "index.php?modules=modules/shop/ctrl/ctrl_shop&op=list_shop&log=" + id;
+                var url = "?modules=shop&op=view&log=" + id;
                 localStorage.setItem('url',url);
             }
-            console.log(id);
-        ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=load_likes&id=' + id +'&user=' + user , 'POST', 'JSON')
+            var token = user.replace(/['"]+/g, '');
+            console.log(token);
+            
+        ajaxPromise('?modules=shop&op=load_likes', 'POST', 'JSON', {id: id, user: token})
         .then(function(data){
             console.log(data);
             if (data == "LIKE") {
@@ -561,8 +564,8 @@ function click_likes(user){
                 //localStorage.removeItem('likes');
             }
             //
-        }).catch(function(){
-            
+        }).catch(function(error){
+            console.log(error);
         });
     });
 

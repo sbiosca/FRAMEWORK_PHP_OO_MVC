@@ -15,9 +15,7 @@ class common {
                 require_once ($top_page);
                 require_once (VIEW_INC . 'header.html');
                 require_once ($view);
-                echo $view;
-                echo $top_page;
-                require_once (VIEW_INC . 'footer.html');
+                //require_once (VIEW_INC . 'footer.html');
             }else {
                 self::error();
             }

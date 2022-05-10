@@ -1,6 +1,5 @@
 <?php
-    //require("modules/shop/model/DAO/shop_dao.class.singleton.php");
-    //require("model/db.class.singleton.php");
+ 
 	class shop_BLL {
 		private $DAO;
 		private $db;
@@ -41,6 +40,25 @@
 		}
 		public function get_count_filter_BLL($args) {
 			return $this -> DAO -> count_filters($this->db, $args);
+		}
+		public function get_read_likes_BLL($args) {
+			$jwt = jwt_process::decode($args[1]);
+			$jwt = json_decode($jwt, TRUE);
+			return $this -> DAO -> read_likes($this->db, $jwt['name'], $args[0]);
+		}
+		public function get_load_likes_BLL($args) {
+			$jwt = jwt_process::decode($args[1]);
+			$jwt = json_decode($jwt, TRUE);
+			$likes = $this -> DAO -> count_likes($this->db, $jwt['name'], $args[0]);
+			
+			if ($likes) {
+				$this -> DAO -> dislike($this->db, $jwt['name'], $args[0]);
+				return "DISLIKE";
+			}else {
+				$this -> DAO -> like($this->db, $jwt['name'], $args[0]);
+				return "LIKE";
+			}
+			//return $this -> DAO -> read_likes($this->db, $jwt['name'], $args[0]);
 		}
 	}
 ?>

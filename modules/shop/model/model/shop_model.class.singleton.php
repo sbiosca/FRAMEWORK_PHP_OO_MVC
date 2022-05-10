@@ -39,5 +39,11 @@
         public function get_count_filter($args) {
             return $this -> BLL -> get_count_filter_BLL($args);
         }
+        public function get_read_likes($args) {
+            return $this -> BLL -> get_read_likes_BLL($args);
+        }
+        public function get_load_likes($args) {
+            return $this -> BLL -> get_load_likes_BLL($args);
+        }
     }
 ?>

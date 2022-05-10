@@ -28,6 +28,12 @@ class ctrl_shop {
     function count_filters() {
         echo json_encode(common::load_models('shop_model', 'get_count_filter', $_POST['search']));
     }
+    function read_likes() {
+        echo json_encode(common::load_models('shop_model', 'get_read_likes', [$_POST['id'], $_POST['user']]));
+    }
+    function load_likes() {
+        echo json_encode(common::load_models('shop_model', 'get_load_likes', [$_POST['id'], $_POST['user']]));
+    }
 
 
 }
@@ -43,18 +49,6 @@ if (isset($_SESSION["tiempo"])) {
 }
 
 switch($_POST['op']) {
-    case "read_likes";
-        $secret = 'maytheforcebewithyou';
-        $token = $_POST['user'];
-
-        $JWT = new JWT;
-        $json = $JWT->decode($token, $secret);
-        $json = json_decode($json, TRUE);
-
-        $dao_shop = new DAO_shop();
-        $like = $dao_shop->read_likes($json['name'],$_POST['id']);
-        echo json_encode($like);
-        break;
     case "load_likes";
         $secret = 'maytheforcebewithyou';
         $token = $_POST['user'];

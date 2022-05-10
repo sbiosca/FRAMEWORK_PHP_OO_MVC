@@ -36,4 +36,12 @@
         <name>count_filters</name>
         <uri>count_filters</uri>
     </function>
+    <function>
+        <name>read_likes</name>
+        <uri>read_likes</uri>
+    </function>
+    <function>
+        <name>load_likes</name>
+        <uri>load_likes</uri>
+    </function>
 </functions>
