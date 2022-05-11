@@ -25,7 +25,7 @@ function login() {
             }
         }).catch(function(error){
             console.log(error);
-            //$("#error_password").html('La contraseña o usuario no es correcto');
+            $("#error_password").html('La contraseña o usuario no es correcto');
         });
     }
 }
@@ -297,11 +297,6 @@ function load_content() {
         });
         
     }
-    /*else if (path[2] === 'register') {
-        load_register();
-    }else if(path[2] === 'login'){
-        load_login();
-    }*/
 }
 
 $(document).ready(function(){

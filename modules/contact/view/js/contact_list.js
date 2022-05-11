@@ -49,8 +49,9 @@ function send_email(content_email) {
 	console.log(content_email);
 	ajaxPromise(friendlyURL('?modules=contact&op=send_contact'), 'POST', 'JSON', content_email)
 	.then(function(data){
+		console.log(data);
 		toastr.success('Email sended');
-	}).catch(function(error, data) {
+	}).catch(function(error) {
 		console.log(error);
 		toastr.error('Something happend when trying to send.' ,'Error');
 	});

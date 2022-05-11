@@ -47,7 +47,7 @@ class login_DAO {
         return "done!";
     }
     public function select_data($db, $token) {
-        $sql = "SELECT username, email, type, avatar FROM users 
+        $sql = "SELECT * FROM users 
         WHERE ID='$token'";
         $stmt = $db->execute($sql);
         return $db->list($stmt);

@@ -38,41 +38,4 @@ class ctrl_shop {
 
 }
 
-/*
-$path = $_SERVER['DOCUMENT_ROOT'] . '/BIOSCAR_PHP_OO_MVC_JQUERY/';
-include_once($path . 'modules/shop/model/DAO_shop.php');
-include_once ($path . 'views/inc/jwt.php');
-@session_start();
-
-if (isset($_SESSION["tiempo"])) {  
-    $_SESSION["tiempo"] = time(); //Devuelve la fecha actual
-}
-
-switch($_POST['op']) {
-    case "load_likes";
-        $secret = 'maytheforcebewithyou';
-        $token = $_POST['user'];
-
-        $JWT = new JWT;
-        $json = $JWT->decode($token, $secret);
-        $json = json_decode($json, TRUE);
-
-        $dao_shop = new DAO_shop();
-        $like = $dao_shop->count_likes($json['name'],$_POST['id']);
-       
-        if ($like) {
-            $dao_shop = new DAO_shop();
-            $like = $dao_shop->dislike_car($json['name'],$_POST['id']);
-            echo json_encode("DISLIKE");
-        }else {
-            $dao_shop = new DAO_shop();
-            $like = $dao_shop->like_car($json['name'],$_POST['id']);
-            echo json_encode("LIKE");
-        }
-
-        
-
-        //echo json_encode($like);
-        break;
-}*/
 ?>

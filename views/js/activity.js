@@ -1,5 +1,5 @@
 function refresh_cookies() {
-    ajaxPromise('modules/login/ctrl/ctrl_login.php?op=refresh_cookies', 'POST', 'JSON')
+    ajaxPromise(friendlyURL('?modules=login&op=refresh_cookies'), 'POST', 'JSON')
         .then(function(result){
             console.log(result);
         }).catch(function(error){
@@ -9,12 +9,12 @@ function refresh_cookies() {
 function regenerate_token(data) {
     console.log(data);
     setInterval(function(){
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=refresh_token', 'POST', 'JSON', data)
+        ajaxPromise(friendlyURL('?modules=login&op=refresh_token'), 'POST', 'JSON', data)
         .then(function(result){
             console.log(result);
             localStorage.setItem("token", result);
-        }).catch(function(){
-            console.log("3rro");
+        }).catch(function(error){
+            console.log(error);
         });
     }, 600000); //solicitud al servidor cada 600 segundos - 10minutos (600000 milisegundos)
     refresh_cookies();
@@ -22,7 +22,7 @@ function regenerate_token(data) {
 
 function protecturl() {
     setInterval(function(){
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=controluser', 'GET')
+        ajaxPromise(friendlyURL('?modules=login&op=controluser'), 'POST')
             .then(function(data){
                 console.log(data);
                 if(data=="type"){
@@ -34,15 +34,15 @@ function protecturl() {
                     toastr.warning("DEBES REALIZAR LOGIN");
                 // setTimeout('window.location.href = window.location.href;',1000);
                 }
-            }).catch(function(){
-
+            }).catch(function(error){
+                console.log(error);
             });
         }, 600000);
 }
 
 function protectactivity() {
     setInterval(function(){
-        ajaxPromise('modules/login/ctrl/ctrl_login.php?op=activity', 'GET')
+        ajaxPromise(friendlyURL('?modules=login&op=activity'), 'GET')
         .then(function(data){
             console.log(data);
             if (data=="inactivo") {
@@ -50,10 +50,10 @@ function protectactivity() {
                         'closeButton': true,                
                     }
                     toastr.error("TIEMPO DE INACTIVIDAD SUPERADO");
-                //logout();
+                logout();
             }
-        }).catch(function(){
-
+        }).catch(function(error){
+            console.log(error);
         });
     }, 600000); //solicitud al servidor cada 600 segundos - 10minutos (600000 milisegundos)
     protecturl();

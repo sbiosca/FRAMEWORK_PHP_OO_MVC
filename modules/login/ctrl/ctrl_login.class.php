@@ -35,63 +35,20 @@
         function new_password() {
             echo json_encode(common::load_models('login_model', 'get_new_password', [$_POST['token'], $_POST['passwd']]));
         }
+        function activity() {
+            echo json_encode(common::load_models('login_model', 'get_activity'));
+        }
+        function controluser() {
+            echo json_encode(common::load_models('login_model', 'get_control'));
+        }
+        function refresh_token(){
+            echo json_encode(common::load_models('login_model', 'get_refresh', $_POST['username']));
+        }
+        function refresh_cookies() {
+            session_regenerate_id();
+            $id_refresh=session_id();
+            echo json_encode($id_refresh);
+        }
     }
 
-/*
-$path = $_SERVER['DOCUMENT_ROOT'] . '/BIOSCAR_PHP_OO_MVC_JQUERY/';
-include_once($path . 'modules/login/model/DAO_login.php');
-include_once($path . 'modules/login/model/validator_register.php');
-include_once ($path . 'views/inc/jwt.php');
-@session_start();
-
-switch($_GET['op']) {
-    case "activity";
-        if (!isset($_SESSION["tiempo"])) {
-            echo time() - $_SESSION["tiempo"];
-            echo "inactivo";
-        } else {
-            if ((time() - $_SESSION["tiempo"]) >= 1800) {  // 1800 segundos - 30 minutos fuera
-                //echo time() - $_SESSION["tiempo"];
-                echo "inactivo";
-                exit;
-            } else {
-                echo time() - $_SESSION["tiempo"];
-                echo "activo";
-                exit;
-            }
-        }
-        break;
-    
-    case "controluser";
-    //echo $_SESSION['type'];
-        if (!isset ($_SESSION['type'])||($_SESSION['type'])!='admin'){
-            if(isset ($_SESSION['type'])&&($_SESSION['type'])!='admin'){
-                echo 'type';
-                exit;
-            }else {
-            echo '!type';
-            exit;
-            }
-            
-        }
-        break;
-    
-    case "refresh_token";
-        //tornar a generar token
-        $header = '{"typ":"JWT", "alg":"HS256"}';
-        $secret = 'maytheforcebewithyou';
-        $payload = '{"iat":"'.time().'",
-                    "exp":"'.time().'",
-                    "name":"'.$_POST["username"].'"}';
-        $JWT = new JWT;
-        $token = $JWT->encode($header, $payload, $secret);
-        echo json_encode($token);
-        break;
-    case "refresh_cookies";
-        //refrescar cookies
-        session_regenerate_id();
-        $id_refresh=session_id();
-        echo json_encode($id_refresh);
-        break;
-}*/
 ?>

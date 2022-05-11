@@ -58,7 +58,6 @@
 				$this -> DAO -> like($this->db, $jwt['name'], $args[0]);
 				return "LIKE";
 			}
-			//return $this -> DAO -> read_likes($this->db, $jwt['name'], $args[0]);
 		}
 	}
 ?>

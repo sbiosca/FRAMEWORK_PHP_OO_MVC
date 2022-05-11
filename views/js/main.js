@@ -28,7 +28,7 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
 }
 
 
@@ -81,6 +81,11 @@ function menu() {
 function menu_logeado(data) {
     console.log(data);
     //console.log(data.replace(/['"]+/g, ''));
+    if (data[0].activate == 'false'){
+        toastr.error("USUARIO NO ACEPTADO");
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
     $("<button></button>").attr({"class" : "button-logout"}).html(
         "<a href=''>LOGOUT</a>"
     ).appendTo("#logear");

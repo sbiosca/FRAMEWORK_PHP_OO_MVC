@@ -56,7 +56,7 @@
                 	$email = json_decode(mail::send_email($mesage), true);
 					//return $email;
 					if ($email) {
-						return "DOne!";
+						return "REGISTRADO";
 					} else {
 						return "error";
 					}
@@ -118,6 +118,37 @@
 			}else {
 				return 'error';
 			}
+		}
+		public function get_activity_BLL() {
+			if (!isset($_SESSION["tiempo"])) {
+				return time() - $_SESSION["tiempo"];
+				return "inactivo";
+			} else {
+				if ((time() - $_SESSION["tiempo"]) >= 1800) {  // 1800 segundos - 30 minutos fuera
+					//echo time() - $_SESSION["tiempo"];
+					return "inactivo";
+					exit;
+				} else {
+					return time() - $_SESSION["tiempo"];
+					return "activo";
+					exit;
+				}
+			}
+		}
+		public function get_control_BLL() {
+			if (!isset ($_SESSION['type'])||($_SESSION['type'])!='admin'){
+				if(isset ($_SESSION['type'])&&($_SESSION['type'])!='admin'){
+					return 'type';
+				}else {
+				return '!type';
+				}
+				
+			}
+		}
+		public function get_refresh_BLL($args) {
+			$token = jwt_process::encode($args);
+			return $token;
+
 		}
 	}
 ?>

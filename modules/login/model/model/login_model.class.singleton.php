@@ -38,5 +38,14 @@
         public function get_new_password($args) {
             return $this -> BLL -> get_new_password_BLL($args);
         }
+        public function get_activity() {
+            return $this -> BLL -> get_activity_BLL();
+        }
+        public function get_control() {
+            return $this -> BLL -> get_control_BLL();
+        }
+        public function get_refresh($args) {
+            return $this -> BLL -> get_refresh_BLL($args);
+        }
     }
 ?>

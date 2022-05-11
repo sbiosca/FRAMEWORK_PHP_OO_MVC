@@ -18,7 +18,7 @@ function register(user){
             console.log(data);
             if (data == "REGISTRADO") {
                 console.log("DONE!");
-                //toastr.success("REGISTRADO CORRECTAMENTE");
+                toastr.success("REGISTRADO CORRECTAMENTE");
                 localStorage.setItem("token", data);
                 //toastr.success("EMAIL VERIFICADO")
                 setTimeout(' window.location.href = "?modules=home&op=view"; ',1000);
@@ -27,21 +27,7 @@ function register(user){
                 console.log("Failed!");
                 $("#error_email").html('El email ya existe');
             }
-            /*if(result == "error"){		
-                $("#error_email").html('El email ya existe');
-                $("#error_password1").html('Las contraseñas no coinciden');
-            }else if(result == "errormail"){		
-                $("#error_email").html('El email ya existe');
-            }else if(result == "errorpassw"){		
-                $("#error_password1").html('Las contraseñas no coinciden');
-            }else if(result == "erroruser") {
-                $("#error_username").html('El usuario ya existe');
-            }else {
-                console.log("REGISTRADO CORRECTAMENTE");
-                toastr.success("EMAIL VERIFICADO")*/
-                //localStorage.setItem("token", result);
-                //setTimeout(' window.location.href = "index.php?modules=modules/home/ctrl/ctrl_home&op=list"; ',1000);
-            //}
+            
         }).catch(function(error){
             console.log(error);
         });
