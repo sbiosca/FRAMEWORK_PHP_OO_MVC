@@ -1,5 +1,4 @@
 function load_type() {
-    //ajaxPromise('modules/search/ctrl/ctrl_search.php?op=load_type', 'GET', 'json')
     ajaxPromise(friendlyURL('?modules=search&op=load_type'), 'POST', 'json')
        .then(function(data) {
             for (row in data) {
@@ -11,7 +10,6 @@ function load_type() {
 }
 
 function load_model(data = undefined) {
-    //ajaxPromise('modules/search/ctrl/ctrl_search.php?op=load_model', 'POST', 'JSON' , data)
     console.log(data);
     ajaxPromise(friendlyURL('?modules=search&op=load_model'), 'POST', 'JSON', data)
        .then(function(data) {
@@ -50,7 +48,6 @@ function autocomplete() {
         if(($('#type').val() == 0) && ($('#model').val() != 0)){ 
             infor.model = $('#model').val();
         }
-        //ajaxPromise('modules/search/ctrl/ctrl_search.php?op=autocomplete', 'POST', 'JSON',  infor)
         ajaxPromise(friendlyURL('?modules=search&op=autocomplete'), 'POST', 'JSON', infor)
         .then(function(data) {
             $('#search_city').empty();

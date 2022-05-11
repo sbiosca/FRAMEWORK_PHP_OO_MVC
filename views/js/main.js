@@ -28,28 +28,36 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
+}
+
+function friendlyURLImages(url) {
+    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC/" + url;
 }
 
 
-
 function menu() {
+    $("<div></div>").attr({"class" : "logo"}).html(
+        '<a href='+ friendlyURL("?modules=home&op=view")+ '><img class="img_logo" src='+friendlyURLImages("views/images/icon-bioscar1.png")+' alt="#" /></a>'
+    ).appendTo(".row");
     $("<li></li>").attr({"class" : "nav-item"}).html(
-        //'<a class="nav-link" href="'+ friendlyURL("?modules=home&op=view") + ' " data-tr="HOMEPAGE">HOMEPAGE</a>'
-        "<a class='nav-link' href='?modules=home&op=view' data-tr='HOMEPAGE'>HOMEPAGE</a>"
+        '<a class="nav-link" href="'+ friendlyURL("?modules=home&op=view") + ' " data-tr="HOMEPAGE">HOMEPAGE</a>'
     ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
-        "<a class='nav-link' href='?modules=home&op=view' data-tr='CARS'>CARS</a>"
+        '<a class="nav-link" href="'+ friendlyURL("?modules=home&op=view") + ' " data-tr="CARS">CARS</a>'
     ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
-        //"<a class='nav-link' href="+ friendlyURL('?modules=shop&op=view')+ "><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
-        "<a class='nav-link' href='?modules=shop&op=view')><img class='img_shop' src='views/images/icon_shop.png'></img></a>"
+        "<a class='nav-link' href="+ friendlyURL('?modules=shop&op=view')+ "><img class='img_shop' src="+ friendlyURLImages('views/images/icon_shop.png')+ "></img></a>"
     ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
-        "<a class='nav-link' href='?modules=contact&op=view'>CONTACT US</a>"
-        //'<a class="nav-link" href="'+ friendlyURL("?modules=contact&op=view") + ' ">CONTACT US</a>'
+        '<a class="nav-link" href="'+ friendlyURL("?modules=contact&op=view") + ' ">CONTACT US</a>'
     ).appendTo(".navbar-nav");
-
+    $("<div></div>").attr({"class" : "nav-item"}).html(
+        "<img class='icon-search' src="+ friendlyURLImages('views/images/search-icon.png')+"></img>" +
+        '<button id="remove-search"><img class="remove-search" src='+ friendlyURLImages("views/images/filter-remove.png")+ '></button>'
+    ).appendTo(".search-form");
+  
+    
         console.log(toke);
         var toke = localStorage.getItem('token');
         if (toke == "REGISTRADO") {
@@ -71,8 +79,7 @@ function menu() {
             menu_logeado(data);
         }).catch(function () {
             $("<button></button>").attr({"class" : "buttonlogin"}).html(
-                //"<a href='index.php?modules=modules/login/ctrl/ctrl_login&op=list_login&log=0'>LOGIN</a>"
-                "<a href='?modules=login&op=list_login'>LOGIN</a>"
+                "<a href="+friendlyURL('?modules=login&op=list_login')+">LOGIN</a>"
             ).appendTo("#logear");
            
         });
@@ -119,7 +126,6 @@ function logout () {
             window.location.href = '?modules=home&op=view';
         }).catch(function (error) {
             console.log(error);
-            //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404';
         });
 }
 

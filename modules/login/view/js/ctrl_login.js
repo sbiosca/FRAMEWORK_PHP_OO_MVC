@@ -2,7 +2,6 @@ function login() {
     if (validator_login() != 0) {
         var data = $('#login__form').serialize();
         console.log(data);
-        //ajaxPromise('modules/login/ctrl/ctrl_login.php?op=login', 'POST', 'json', data)
         ajaxPromise(friendlyURL('?modules=login&op=login'), 'POST', 'JSON', data)
        .then(function(result) {
             console.log(result);
@@ -20,7 +19,7 @@ function login() {
                     window.location.href = url;
                     click_likes(result);
                 }else {*/
-                    setTimeout(' window.location.href = "?modules=home&op=view"; ',1000);
+                    setTimeout(' window.location.href = '+friendlyURL("?modules=home&op=view")+'; ',1000);
                 
             }
         }).catch(function(error){
@@ -210,13 +209,14 @@ function load_form_new_password(token){
         .then(function(result) {
              console.log(result);
              if(result == "verify"){
+                $('.login').empty();
                 $('<form></form>').attr({'id': 'new_password__form', 'method': 'post'}).html('<h2>New password</h2>').appendTo('.login');
                 $('<div></div>').attr({'class': 'form__content'}).appendTo('#new_password__form');
                 $('<div></div>').attr({'class': 'form__input'}).html('<label for="password"><b>Password</b></label>'+
-                '<input type="text" placeholder="Enter password" id="password" name="password" required>'+
+                '<input type="password" placeholder="Enter password" id="password" name="password" required>'+
                 '<font color="red"><span id="error_password" class="error"></span></font>').appendTo('.form__content');
                 $('<div></div>').attr({'class': 'form__input'}).html('<label for="password1"><b>Password</b></label>'+
-                '<input type="text" placeholder="Enter password" id="password1" name="password1" required>'+
+                '<input type="password" placeholder="Enter password" id="password1" name="password1" required>'+
                 '<font color="red"><span id="error_password1" class="error"></span></font>').appendTo('.form__content');
                 $('<div></div>').attr({'class': 'button_container'}).html('<input class="button" id="recover" type="button" value = "Enter"/>').appendTo('.form__content');
                 click_new_password(token); 
@@ -249,9 +249,9 @@ function validate_new_password(){
 		document.getElementById('error_password').innerHTML = "Tienes que escribir la contraseña";
 		error = true;
 	}else{
-        if(document.getElementById('password').value.length < 8){
+        if(document.getElementById('password').value.length < 5){
             document.getElementById('error_password1').innerHTML = "";
-            document.getElementById('error_password').innerHTML = "La password tiene que tener 8 caracteres como minimo";
+            document.getElementById('error_password').innerHTML = "La password tiene que tener 5 caracteres como minimo";
             error = true;
         }else{
             if(document.getElementById('password').value !== document.getElementById('password1').value){
@@ -283,15 +283,15 @@ function load_content() {
     let path = window.location.pathname.split('/');
     //$('.container').empty();
     if(path[4] === 'recover'){
-        load_form_new_password(path[4]);
+        load_form_new_password(path[5]);
     }else if (path[4] === 'verify') {
         console.log(path[5]);
-        console.log("HOLAAAAAAAAAAAAAA");
         var token_email = path[5];
 
-        ajaxPromise(friendlyURL('?modules=login&op=verify_email'), 'POST', 'JSON', token_email)
+        ajaxPromise(friendlyURL('?modules=login&op=verify_email'), 'POST', 'JSON', {token: token_email})
         .then(function(data) {
             console.log(data);
+            toastr.success("YA PUEDES INICIAR SESION!")
         }).catch(function(error) {
             console.log(error);
         });

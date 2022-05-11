@@ -72,7 +72,7 @@
 			$email = $this -> DAO -> select_verified_email($this->db, $args);
 			if ($email) {
 				$new_token = common::generate_token(20);
-				$this -> dao -> update_verified_email($this->db, $args, $new_token);
+				$this -> DAO -> update_verified_email($this->db, $args, $new_token);
 				return "done";
 			}
 			return "fail";
@@ -102,10 +102,11 @@
 			}
 		}
 		public function get_token_BLL($args) {
-			if($this -> DAO -> select_verified_email($this->db, $args)){
-				return 'done';
+			$token = $this -> DAO -> select_verified_email($this->db, $args);
+			if($token){
+				return 'verify';
 			}else {
-				return 'error';
+				return $token;
 			}
 		}
 		public function get_new_password_BLL($args) {

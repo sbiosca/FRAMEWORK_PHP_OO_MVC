@@ -12,13 +12,12 @@ function register(user){
     if(validator_register() != 0){
         var data = $('#register__form').serialize() + "&avatar=" +user;
         console.log(data);
-        //ajaxPromise('modules/login/ctrl/ctrl_login.php?op=register', 'POST', 'json', data)
         ajaxPromise(friendlyURL('?modules=login&op=register'), 'POST', 'JSON', data)
        .then(function(data) {
             console.log(data);
             if (data == "REGISTRADO") {
                 console.log("DONE!");
-                toastr.success("REGISTRADO CORRECTAMENTE");
+                toastr.success("REGISTRADO CORRECTAMENTE, VERIFICA QUE ERES TU EN EL CORREO");
                 localStorage.setItem("token", data);
                 //toastr.success("EMAIL VERIFICADO")
                 setTimeout(' window.location.href = "?modules=home&op=view"; ',1000);

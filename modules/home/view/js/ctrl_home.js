@@ -4,7 +4,6 @@ function loadbrands(load = 0) {
 
     console.log(items);
     console.log(loaded);
-    //ajaxPromise('?modules=home&op=carrousel_brand', 'POST', 'json',{loaded: loaded,items: items}
     ajaxPromise(friendlyURL('?modules=home&op=carrousel_brand'), 'POST', 'JSON')
    .then(function(data) {
         console.log(data);
@@ -12,7 +11,7 @@ function loadbrands(load = 0) {
             $('<div></div>').attr({'id': data[row].brand_name, 
             "class": "single-slide"})
             .appendTo('.owl-carousel')
-            .html('<img id=' + data[row].brand_name + ' class="img_brand" src = "views/images/logos/' + data[row].brand_img 
+            .html('<img id=' + data[row].brand_name + ' class="img_brand" src = "'+ friendlyURLImages("views/images/logos/") + data[row].brand_img 
             + '" style = "width: 50%;  height: 130px; "></img><h1>'+ data[row].brand_name +'</h1>');
         }
         jQuery("#carousel").owlCarousel({
@@ -46,18 +45,16 @@ function loadbrands(load = 0) {
           });
     }).catch(function(error) {
         console.log(error);
-        //window.location.href = "index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404";
     });
 }
 
 function loadcategory() {
     ajaxPromise(friendlyURL('?modules=home&op=categ'), 'POST', 'json')  
-    //ajaxPromise('modules/home/ctrl/ctrl_home.php?op=categ', 'GET', 'json')
     .then(function(data) {
         for (row in data) {
             $('<div></div>').attr('class',"services__content").appendTo(".container_categ")
             .html(
-                "<img id=" + data[row].cod_category + " class='img_cate' src='views/images/" + data[row].category_img + 
+                "<img id=" + data[row].cod_category + " class='img_cate' src='" + friendlyURLImages('views/images/') + data[row].category_img + 
                 "'style = 'max-width: 100%; '></img>"
              );
              $('<div></div>').attr('class',"services__content").appendTo(".container_categ2")
@@ -65,23 +62,23 @@ function loadcategory() {
                  "<p class='name_cate'>" + data[row].category_name + "</p>"
               );
         }
-    }).catch(function() {
-        //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404';
+        
+    }).catch(function(error) {
+        console.log(error);
     });
 }
 
 function loadtype() {
     ajaxPromise(friendlyURL('?modules=home&op=type'), 'POST', 'json')
-    //ajaxPromise('modules/home/ctrl/ctrl_home.php?op=type', 'GET', 'json')
    .then(function(data) {
         for (row in data) {
             $('<div></div>').attr('class',"services__content").appendTo(".container_type").html( 
-                "<img id="+ data[row].cod_type +" class='img_type' src='views/images/" + data[row].type_img + "'style = 'max-width: 100%; height: 200px;'></img>"
+                "<img id="+ data[row].cod_type +" class='img_type' src='" + friendlyURLImages('views/images/') + data[row].type_img + "'style = 'max-width: 100%; height: 200px;'></img>"
              )
              
         }
-    }).catch(function() {
-        //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=404';
+    }).catch(function(error) {
+      console.log(error);
     });
     
 }
@@ -97,7 +94,7 @@ function click() {
         localStorage.setItem('filters',filters);
         localStorage.setItem('brand', brand);
             setTimeout(function(){ 
-            window.location.href = '?modules=shop&op=view';
+            window.location.href = friendlyURL('?modules=shop&op=view');
             }, 500);  
     });
 
@@ -111,7 +108,7 @@ function click() {
         localStorage.setItem('filters',filters); 
         localStorage.setItem('cate',cate); 
             setTimeout(function(){ 
-            window.location.href = '?modules=shop&op=view';
+            window.location.href = friendlyURL('?modules=shop&op=view');
             }, 500);  
     });
 
@@ -125,7 +122,7 @@ function click() {
         localStorage.setItem('filters',filters); 
         localStorage.setItem('type',type); 
             setTimeout(function(){ 
-            window.location.href = '?modules=shop&op=view';
+            window.location.href = friendlyURL('?modules=shop&op=view');
             }, 500);  
     });
 }

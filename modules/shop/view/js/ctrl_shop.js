@@ -8,7 +8,7 @@ function ajaxForSearch(url, items = 0, total, search) {
             $('<div></div>').attr('class',"services__content").appendTo(".all_cars")
             .html(
                 "<div class='caret'  id=" + data[row].enrolment+">" +
-                "<p id='p_img'><img id=" + data[row].enrolment+" class='img_car' src='views/images/cars/" + data[row].car_img + 
+                "<p id='p_img'><img id=" + data[row].enrolment+" class='img_car' src='" + friendlyURLImages('views/images/cars/') + data[row].car_img + 
                 "'style = 'max-width: 100%;'></img></p><div class='div-likes' id=" + data[row].enrolment+" ><p id=" + data[row].enrolment +"1" + " class='icon-like'>&#x2665</p></div><br>" + 
                 "<p id='p_price'>" + data[row].price + "€" + "</p><br>" +
                 "<p id='p_brand'>" + data[row].brand_name + " " + data[row].model_name +"</p> <br>" +
@@ -36,7 +36,7 @@ function load_filter() {
                 "<select class='colorss' id='selc'><optgroup class='select3' label='ALL COLORS'>" +
                 "<option selected >SELECT THE COLOR</option></optgroup></select><br><br>" +
                 "<input class='button' name='Submit' type='button' id='filter' value='Filtrar' onclick='filters()'/>"+
-                "<button id='remove-filters'><img class='remove-filter' src='views/images/filter-remove.png'/></button>" +
+                "<button id='remove-filters'><img class='remove-filter' src="+friendlyURLImages('views/images/filter-remove.png')+"></button>" +
                 "</div>" +
                 "<div>" +
                 "<select>" +
@@ -385,8 +385,8 @@ function details(id) {
                 $('<div></div>').attr({ 
                 "class": ""}).appendTo(".div_only_car")
                 .html(
-                    "<img class='img_only_car' src='views/images/cars/" + data[row].img + 
-                    "'style = 'width: 110% height:150px ;'></img>" 
+                    "<img class='img_only_car' src='"+friendlyURLImages('views/images/cars/') + data[row].img + 
+                    "' style = 'width: 110% height:150px ;'></img>" 
                  );
             }
                 $('.div_only_car').slick({
@@ -396,12 +396,11 @@ function details(id) {
                     cssEase: 'linear',
                   });
             $('<div></div>').attr('class',"services__content").appendTo(".button1")
-                  .html("<button><a href='?modules=shop&op=view'>VOLVER</a></button>")
+                  .html("<button><a href="+friendlyURL('?modules=shop&op=view')+">VOLVER</a></button>")
             mapBox(data);
             more_cars(data);
         }).catch(function(error) {
             console.log(error);
-            //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=503';
         });
 }
 
@@ -414,8 +413,7 @@ function more_cars(data) {
     let categ = data[0].category_name;
     let type = data[0].type_name;
     let car = data[0].enrolment;
-    //ajaxPromise('modules/shop/ctrl/ctrl_shop.php?op=more_related&categ=' + data[0].category_name + '&type=' + data[0].type_name + '&car=' + data[0].enrolment , 'GET', 'json')
-    ajaxPromise(friendlyURL('?modules=shop&op=more_related'), 'POST', 'JSON', {categ: categ, type: type, car: car})
+   ajaxPromise(friendlyURL('?modules=shop&op=more_related'), 'POST', 'JSON', {categ: categ, type: type, car: car})
        .then(function(data) {
         console.log(data);
         for (row in data){
@@ -423,7 +421,7 @@ function more_cars(data) {
                 .html(
                     "<div class='more_cars' id=" + data[row].enrolment+">" +
                     "<h2>MORE CARS YOU MIGHT BE INTERESTED IN</h2>" +
-                    "<img class='img_cate' src='views/images/cars/" + data[row].car_img + 
+                    "<img class='img_cate' src='"+friendlyURLImages('views/images/cars/')+ data[row].car_img + 
                     "'style = 'max-width: 100%; '></img>" +
                     "</div>"
                 );
@@ -441,7 +439,7 @@ function details_map(map, data) {
         const popup = new mapboxgl.Popup({offset : 25})
         .setHTML("<div class='popup' id=" + data[row].enrolment +" ><p>"+ data[row].price +"</p><br><p id='p_brand1'>" 
         + data[row].brand_name + " " + data[row].model_name + 
-        "<p id='p_img'><img class='img_car1' src='views/images/cars/" + data[row].car_img + 
+        "<p id='p_img'><img class='img_car1' src='"+ friendlyURLImages('views/images/cars/') + data[row].car_img + 
         "'style = 'max-width: 100%;'></img></p> <br>" +
         "</p></div>");
         new mapboxgl.Marker({color:'red'})

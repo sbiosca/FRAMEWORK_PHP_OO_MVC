@@ -29,6 +29,10 @@ body {
     background-color: rgb(184, 204, 184);
     
   }
+  .row {
+    position: relative;
+    left: 3cm;
+  }
 
   #menu {
       font-size: 20px;
@@ -214,11 +218,16 @@ body {
     position: relative;  
     left: -100%;
     width: 160px;
-
   }
+
   .img_shop {
     width: 50px;
     height: 50px;
+  }
+
+  .logo {
+    position: relative;  
+    left: -90%;
   }
 
   .img_car{

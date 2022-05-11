@@ -15,10 +15,9 @@
         }
         function register() {
             echo json_encode(common::load_models('login_model', 'get_register', [$_POST['username'], $_POST['password'], $_POST['email'], $_POST['password1'], $_POST['avatar']]));
-            //echo json_encode(common::load_models('login_model', 'get_register'));
         }
         function verify_email() {
-            echo json_encode(common::load_models('login_model', 'get_verify_email', $_POST['token_email']));
+            echo json_encode(common::load_models('login_model', 'get_verify_email', $_POST['token']));
         }
         function user_menu() {
             echo json_encode(common::load_models('login_model', 'get_user_menu', $_POST['token']));
