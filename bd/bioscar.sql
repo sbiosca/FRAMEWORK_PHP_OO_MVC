@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2022 a las 12:20:55
+-- Tiempo de generación: 11-05-2022 a las 11:09:43
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 7.3.33
 
@@ -83,12 +83,12 @@ CREATE TABLE `cars` (
 --
 
 INSERT INTO `cars` (`id`, `numrack`, `cod_model`, `enrolment`, `exchange`, `color`, `cod_type`, `km`, `doors`, `date`, `extras`, `cod_category`, `car_img`, `lat`, `lon`, `city`, `price`, `count`) VALUES
-(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 50),
+(1, '05525', 'FO', '2556HRM', 'AUTOMATIC', 'BLUE', 'EL', 120, 5, '2020-04-10', 'sensor', 'KM', 'ford_focus.jpg', 38.8214, -0.609692, 'Ontinyent', 25000, 53),
 (2, '03565602', 'EN', '2656JTR', 'AUTOMATIC', 'RED', 'HY', 27852, 3, '2022-02-01', 'sensor', '2M', 'ferrari_enzo.jpg', 39.4697, -0.376335, 'Valencia', 250000, 46),
 (3, '2566', 'FI', '2036HTW', 'MANUAL', 'WHITE', 'GAS', 6980, 3, '2020-04-17', 'camera', '2M', 'ford_fiesta.jpg', 38.8387, -0.518189, 'Albaida', 14000, 31),
 (4, '26562603sF', 'UR', '0239LNG', 'AUTOMATIC', 'YELLOW', 'GAS', 12000, 5, '2019-04-05', '4x4', 'GR', 'lamborghini_urus.jpg', 41.3829, 2.17743, 'Barcelona', 150000, 30),
 (5, '1023153212d', 'KA', '7692BSR', 'MANUAL', 'BLUE', 'GAS', 199586, 3, '2002-02-20', 'sin', '2M', 'ford_ka.jpg', 38.3436, -0.488171, 'Alacant', 2500, 34),
-(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 133);
+(6, '1212sf054', 'MS', '2363LKN', 'AUTOMATIC', 'BLACK', 'EL', 200, 5, '2021-10-21', 'tesla', 'KM', 'tesla_model-s.jpg', 38.7913, 0.176699, 'Javea', 68000, 137);
 
 -- --------------------------------------------------------
 
@@ -1272,10 +1272,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `username`, `password`, `email`, `type`, `avatar`, `token_email`, `activate`) VALUES
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NDk4ODUsImV4cCI6MTY1MTg0OTg4NSwibmFtZSI6IjEwNjA0NzI4ODgifQ.tz3zLm189GpVp1lD1uumPBA2m_HoOIOfkA7BGy2rAR0', '1060472888', '$2y$12$TXkKgEPNskwbWcERHZaakeg4pgOqITT1lgq3E2Tg0SYJxhDe9Rt.S', 'serbidawaa@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/58.jpg', '13b79e23bbe9479dd692', 'false'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTAzMjgsImV4cCI6MTY1MTg1MDMyOCwibmFtZSI6InlvbW9nYW4yIn0.gu0gIaMomulAngWwVONdqUDzyCByD4-10Gr7Kc7VrpM', 'yomogan2', '$2y$12$3b.r.RI3AUjpqORtb3CU7OG9dp6waQjXxcl4FHx8KNggNZhSRXdxi', 'yomogan@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/61.jpg', '4d021e5eaa2b11291964', 'false'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTM5MjQsImV4cCI6MTY1MTg1MzkyNCwibmFtZSI6InBlcGl0bzEyMyJ9.CB43VOsLeV46pS_vzDzgu9W9l2Vfh5COUBo5eNOZGT4', 'pepito123', '$2y$12$ZfqEXoNagz9.7ejWMOI93eMpV7rYsWEQJWO3SshN3jbtrx./bGwAa', 'sbio4@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/12.jpg', '2b1db468ea0fe584ba47', 'false'),
-('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE5MTc5OTIsImV4cCI6MTY1MTkxNzk5MiwibmFtZSI6InNlcmdpYmlvc2NhIn0.rgZvyNeiIiFjtpn3ENl0eZgp39FX7deJE1wsDM7aZ4w', 'sergibiosca', '$2y$12$cu.rK3cvQnvxo1dsjJfVjusi8v/PkFCvIzceSVi3dUbP7qJKPs0d2', 'serbidaw@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/55.jpg', '0719ea7461edc49b36e4', 'false');
+('2d3b', '10604728', '$2y$12$wI7lIhFgu6HPU3qKa8MHcONY7qKIc6xA3oM.v0piElprcg87VvFeC', 'sbiosca94ee@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/58.jpg', 'f3848e60213166d3324a', 'false'),
+('30eb', 'sergibiosca', '$2y$12$nhAE7sQEGEiCIW7CRkcP1uDNJbdzbT3qM0iSm/7cFih0fePwjwQrq', 'serbidaw@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/43.jpg', '357ba028c3176b971689', 'false'),
+('AfMlJQ3fP7VXY3nroSJTD5LmdyZ2_google.com', 'carlaloossorianoo7@gmail.com', '', 'carlaloossorianoo7@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a/AATXAJyZmUX0r0f3IAgkx3yhsXXXeKVcoeNdA4OU5Vs=s96-c', '', 'true'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NDk4ODUsImV4cCI6MTY1MTg0OTg4NSwibmFtZSI6IjEwNjA0NzI4ODgifQ.tz3zLm189GpVp1lD1uumPBA2m_HoOIOfkA7BGy2rAR0', '1060472888', '$2y$12$TXkKgEPNskwbWcERHZaakeg4pgOqITT1lgq3E2Tg0SYJxhDe9Rt.S', 'serbidawaa@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/women/58.jpg', '13b79e23bbe9479dd692', 'true'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTAzMjgsImV4cCI6MTY1MTg1MDMyOCwibmFtZSI6InlvbW9nYW4yIn0.gu0gIaMomulAngWwVONdqUDzyCByD4-10Gr7Kc7VrpM', 'yomogan2', '$2y$12$3b.r.RI3AUjpqORtb3CU7OG9dp6waQjXxcl4FHx8KNggNZhSRXdxi', 'yomogan@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/61.jpg', '4d021e5eaa2b11291964', 'true'),
+('eyJ0eXAiOiJKV1QiLCAiYWxnIjoiSFMyNTYifQ.eyJpYXQiOjE2NTE4NTM5MjQsImV4cCI6MTY1MTg1MzkyNCwibmFtZSI6InBlcGl0bzEyMyJ9.CB43VOsLeV46pS_vzDzgu9W9l2Vfh5COUBo5eNOZGT4\r\n', 'pepito123', '$2y$12$ZfqEXoNagz9.7ejWMOI93eMpV7rYsWEQJWO3SshN3jbtrx./bGwAa', 'sbio4@gmail.com', 'cliente', 'https://randomuser.me/api/portraits/men/12.jpg', '2b1db468ea0fe584ba47', 'true'),
+('sPA3YcG1v8P9NCNlC93e8cmegl43_google.com', 'sbiosca94@gmail.com', '', 'sbiosca94@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a-/AOh14GhNvBhrbee6SYJRmMohMFjOXN8q1wHNCgx22n4C8A=s96-c', '5f571fc40a7af4ea9e9f', 'true'),
+('sVrkPFI1uqPCHqIw5ekEBWruBlg1_google.com', 'sergibiosca22@gmail.com', '', 'sergibiosca22@gmail.com', 'cliente', 'https://lh3.googleusercontent.com/a/AATXAJyw5IOhiBC72MEOBrh3MekwYsJPQ9BMugm4kUW8=s96-c', '', 'true');
 
 --
 -- Índices para tablas volcadas

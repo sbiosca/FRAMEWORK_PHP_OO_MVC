@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright(c)2011 Miguel Angel Nubla Ruiz (miguelangel.nubla@gmail.com). All rights reserved
+ * Copyright(c)2011 Miguel Angel Nubla Ruiz (miguelangel.nubla@gmail.com). All rights reserved /
  */
 
 class jwt {
