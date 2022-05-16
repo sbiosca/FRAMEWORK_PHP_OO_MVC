@@ -28,18 +28,18 @@ function friendlyURL(url) {
         	link +=  "/"+aux[1];
         }
     }
-    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC" + link;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC" + link;
 }
 
 function friendlyURLImages(url) {
-    return "http://192.168.1.27/FRAMEWORK_PHP_OO_MVC/" + url;
+    return "http://localhost/FRAMEWORK_PHP_OO_MVC/" + url;
 }
 
 
 function menu() {
     $("<div></div>").attr({"class" : "logo"}).html(
         '<a href='+ friendlyURL("?modules=home&op=view")+ '><img class="img_logo" src='+friendlyURLImages("views/images/icon-bioscar1.png")+' alt="#" /></a>'
-    ).appendTo(".row");
+    ).appendTo(".navbar-nav");
     $("<li></li>").attr({"class" : "nav-item"}).html(
         '<a class="nav-link" href="'+ friendlyURL("?modules=home&op=view") + ' " data-tr="HOMEPAGE">HOMEPAGE</a>'
     ).appendTo(".navbar-nav");
@@ -72,7 +72,6 @@ function menu() {
         if (toke) {
             var toke = toke.replace(/['"]+/g, '');
         }
-        //window.location.reload();
         ajaxPromise(friendlyURL('?modules=login&op=user_menu'), 'POST', 'JSON', {token: toke})
         .then(function(data) {
             console.log(data);
@@ -87,7 +86,6 @@ function menu() {
 
 function menu_logeado(data) {
     console.log(data);
-    //console.log(data.replace(/['"]+/g, ''));
     if (data[0].activate == 'false'){
         toastr.error("USUARIO NO ACEPTADO");
         localStorage.removeItem('token');
@@ -123,7 +121,7 @@ function logout () {
             console.log(data);
             localStorage.removeItem('token');
             localStorage.removeItem('url');
-            window.location.href = '?modules=home&op=view';
+            window.location.href = friendlyURL('?modules=home&op=view');
         }).catch(function (error) {
             console.log(error);
         });

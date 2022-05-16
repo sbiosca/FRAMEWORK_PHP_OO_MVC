@@ -116,7 +116,7 @@ function icon_search() {
         if(search.length != 0){
             localStorage.setItem('search', JSON.stringify(search));
         }
-        window.location.href="?modules=shop&op=view";
+        window.location.href=friendlyURL("?modules=shop&op=view");
     });
 
     $(document).on('click', '#remove-search', function() {

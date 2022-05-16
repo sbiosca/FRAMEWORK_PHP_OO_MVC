@@ -20,7 +20,6 @@ body {
     }
 
   #header {
-      
       height:100px;
       background-repeat:no-repeat;
     }
@@ -31,7 +30,7 @@ body {
   }
   .row {
     position: relative;
-    left: 3cm;
+    right: 3cm;
   }
 
   #menu {
@@ -225,10 +224,7 @@ body {
     height: 50px;
   }
 
-  .logo {
-    position: relative;  
-    left: -90%;
-  }
+  
 
   .img_car{
     height: 210px;

@@ -53,7 +53,7 @@ function send_email(content_email) {
 		toastr.success('Email sended');
 	}).catch(function(error) {
 		console.log(error);
-		toastr.error('Something happend when trying to send.' ,'Error');
+		//toastr.error('Something happend when trying to send.' ,'Error');
 	});
 }
 

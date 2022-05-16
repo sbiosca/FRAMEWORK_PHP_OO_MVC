@@ -172,7 +172,7 @@ function news() {
 }
 function loadDivs() {
     $('<h1></h1>').html('').appendTo('#homePage').attr("style", "padding-bottom: 50px");
-    $('<div></div>').attr({'id': "containerCategories", 'class':'row'}).appendTo('#homePage');
+    $('<div></div>').attr({'id': "containerCategories", 'class':'row1'}).appendTo('#homePage');
     //loadbrands();
     click();
     loadcategory();

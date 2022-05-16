@@ -13,13 +13,8 @@ function login() {
                     "extendedTimeout" : "5"
                 });
                 localStorage.setItem("token", result);
-                //var url = localStorage.getItem('url')
-                
-                /*if (url){
-                    window.location.href = url;
-                    click_likes(result);
-                }else {*/
-                    setTimeout(' window.location.href = '+friendlyURL("?modules=home&op=view")+'; ',1000);
+                    //setTimeout(' window.location.href = '+friendlyURL("?modules=home&op=view")+'; ',1000);
+                    window.location.href = friendlyURL("?modules=home&op=view");
                 
             }
         }).catch(function(error){
