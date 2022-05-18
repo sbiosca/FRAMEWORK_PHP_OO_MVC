@@ -307,10 +307,9 @@ function load_all_filters () {
         var total = null;
         ajaxForSearch(url, items, total, search);
     }else {
-        //modules=shop&op=filters
+    
         $('#remove-filters').remove();
-        //var url = "modules/shop/ctrl/ctrl_shop.php?op=list_cars"
-        //var url2 = "modules/shop/ctrl/ctrl_shop.php?op=count_pagination"
+        
         var url = friendlyURL("?modules=shop&op=list_cars");
         var url2 =  friendlyURL("?modules=shop&op=count_pagination");
         load_pagination(url2, url);
@@ -334,8 +333,8 @@ function remove_filters() {
         localStorage.removeItem('price');
         localStorage.removeItem('km');
         localStorage.removeItem('filters');
-        //window.location.href = friendlyURL('?modules=shop&op=view');
-        window.location.href = '?modules=shop&op=view';
+        window.location.href = friendlyURL('?modules=shop&op=view');
+        //window.location.href = '?modules=shop&op=view';
     });
 }
 
@@ -493,7 +492,7 @@ function load_pagination(url2, url, search = null){
 
     }).catch(function(error) {
         console.log(error);
-        //window.location.href = 'index.php?modules=modules/exceptions/ctrl/ctrl_exceptions&err=503';
+        
     });   
 }
 
@@ -504,18 +503,27 @@ function read_likes_user(data,user) {
         console.log(data[row].enrolment);
         var car = data[row].enrolment;
         var token = user.replace(/['"]+/g, '');
-        ajaxPromise('?modules=shop&op=read_likes', 'POST', 'JSON', {id: car, user: token})
+            var social_google = "google"
+            var social_github = "github"
+            if (token.includes(social_github)) {
+                var jwt = "NO";
+            }else if (token.includes(social_google)) {
+                var jwt = "NO";
+            }else {
+                var jwt = "YES";
+            }
+        ajaxPromise('?modules=shop&op=read_likes', 'POST', 'JSON', {id: car, user: token, jwt: jwt})
         .then(function(data){
             console.log(data);
             if (data[0].enrolment == null) {
                 console.log("NO LIKE");
-                //click_likes(user,data[0].likes);
+                
             }else {
                 console.log(data[0].enrolment)
                 var likee = document.getElementById(data[0].enrolment + "1");
                 console.log(likee);
                 likee.style.color = '#FF0000';
-                //click_likes(user,data[0].likes);
+                
             }
             //
         }).catch(function(eerr){
@@ -527,8 +535,7 @@ function read_likes_user(data,user) {
 
 function click_likes(user){
     $(document).on("click",".div-likes",function() {
-        /*$('<p></p>').attr('class',"icon-like").appendTo(".caret")
-            .html("")*/
+        
             var id = this.getAttribute('id');
             if (user == null) {
                 toastr.error("DEBES INICIAR SESION PARA HACER LIKE", {
@@ -543,8 +550,19 @@ function click_likes(user){
             }
             var token = user.replace(/['"]+/g, '');
             console.log(token);
+
+            var social_google = "google"
+            var social_github = "github"
+            if (token.includes(social_github)) {
+                var jwt = "NO";
+            }else if (token.includes(social_google)) {
+                var jwt = "NO";
+            }else {
+                var jwt = "YES";
+            }
             
-        ajaxPromise('?modules=shop&op=load_likes', 'POST', 'JSON', {id: id, user: token})
+            
+        ajaxPromise('?modules=shop&op=load_likes', 'POST', 'JSON', {id: id, user: token, jwt: jwt})
         .then(function(data){
             console.log(data);
             if (data == "LIKE") {
@@ -559,7 +577,7 @@ function click_likes(user){
                 console.log(likee);
                 likee.style.color = '#808080';
                 toastr.success("DISLIKE REALIZADO CON ÉXITO!");
-                //localStorage.removeItem('likes');
+                
             }
             //
         }).catch(function(error){

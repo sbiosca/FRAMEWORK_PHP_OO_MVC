@@ -42,22 +42,39 @@
 			return $this -> DAO -> count_filters($this->db, $args);
 		}
 		public function get_read_likes_BLL($args) {
-			$jwt = jwt_process::decode($args[1]);
-			$jwt = json_decode($jwt, TRUE);
-			return $this -> DAO -> read_likes($this->db, $jwt['name'], $args[0]);
+			if ($args[2] == "NO") {
+				return $this -> DAO -> read_likes($this->db, $args[1], $args[0]);
+			}else {
+				$jwt = jwt_process::decode($args[1]);
+				$jwt = json_decode($jwt, TRUE);
+				return $this -> DAO -> read_likes($this->db, $jwt['name'], $args[0]);
+			}
+			
 		}
 		public function get_load_likes_BLL($args) {
-			$jwt = jwt_process::decode($args[1]);
-			$jwt = json_decode($jwt, TRUE);
-			$likes = $this -> DAO -> count_likes($this->db, $jwt['name'], $args[0]);
-			
-			if ($likes) {
-				$this -> DAO -> dislike($this->db, $jwt['name'], $args[0]);
-				return "DISLIKE";
+			if ($args[2] == "NO") {
+				$likes = $this -> DAO -> count_likes($this->db, $args[1], $args[0]);
+				if ($likes) {
+					$this -> DAO -> dislike($this->db, $args[1], $args[0]);
+					return "DISLIKE";
+				}else {
+					$this -> DAO -> like($this->db, $args[1], $args[0]);
+					return "LIKE";
+				}
 			}else {
-				$this -> DAO -> like($this->db, $jwt['name'], $args[0]);
-				return "LIKE";
+				$jwt = jwt_process::decode($args[1]);
+				$jwt = json_decode($jwt, TRUE);
+				$likes = $this -> DAO -> count_likes($this->db, $jwt['name'], $args[0]);
+				if ($likes) {
+					$this -> DAO -> dislike($this->db, $jwt['name'], $args[0]);
+					return "DISLIKE";
+				}else {
+					$this -> DAO -> like($this->db, $jwt['name'], $args[0]);
+					return "LIKE";
+				}
 			}
+						
+			
 		}
 	}
 ?>

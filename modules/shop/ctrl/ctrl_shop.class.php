@@ -29,10 +29,10 @@ class ctrl_shop {
         echo json_encode(common::load_models('shop_model', 'get_count_filter', $_POST['search']));
     }
     function read_likes() {
-        echo json_encode(common::load_models('shop_model', 'get_read_likes', [$_POST['id'], $_POST['user']]));
+        echo json_encode(common::load_models('shop_model', 'get_read_likes', [$_POST['id'], $_POST['user'], $_POST['jwt']]));
     }
     function load_likes() {
-        echo json_encode(common::load_models('shop_model', 'get_load_likes', [$_POST['id'], $_POST['user']]));
+        echo json_encode(common::load_models('shop_model', 'get_load_likes', [$_POST['id'], $_POST['user'], $_POST['jwt']]));
     }
 
 
